@@ -1,12 +1,13 @@
 module trpc.group/trpc-go/trpc-agent-go/knowledge/document/reader/pdf
 
-go 1.21
+go 1.24.1
 
+toolchain go1.24.7
 
 require (
 	github.com/go-pdf/fpdf v0.9.0
 	github.com/ledongthuc/pdf v0.0.0-20250511090121-5959a4027728
-	trpc.group/trpc-go/trpc-agent-go v0.0.1
+	trpc.group/trpc-go/trpc-agent-go v0.2.2
 )
 
 require (

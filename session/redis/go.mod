@@ -12,8 +12,8 @@ require (
 	github.com/redis/go-redis/v9 v9.11.0
 	github.com/spaolacci/murmur3 v1.1.0
 	github.com/stretchr/testify v1.10.0
-	trpc.group/trpc-go/trpc-agent-go v0.1.2
-	trpc.group/trpc-go/trpc-agent-go/storage/redis v0.0.3
+	trpc.group/trpc-go/trpc-agent-go v0.2.2
+	trpc.group/trpc-go/trpc-agent-go/storage/redis v0.2.2
 )
 
 require (

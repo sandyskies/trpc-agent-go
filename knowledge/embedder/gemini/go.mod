@@ -1,10 +1,12 @@
 module trpc.group/trpc-go/trpc-agent-go/knowledge/embedder/gemini
 
-go 1.21
+go 1.23.0
+
+toolchain go1.24.7
 
 require (
 	google.golang.org/genai v1.0.0
-	trpc.group/trpc-go/trpc-agent-go v0.0.0
+	trpc.group/trpc-go/trpc-agent-go v0.2.2
 )
 
 require (

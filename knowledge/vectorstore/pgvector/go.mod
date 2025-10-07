@@ -1,6 +1,8 @@
 module trpc.group/trpc-go/trpc-agent-go/knowledge/vectorstore/pgvector
 
-go 1.21
+go 1.23.0
+
+toolchain go1.24.7
 
 replace trpc.group/trpc-go/trpc-agent-go => ../../../
 
@@ -8,7 +10,7 @@ require (
 	github.com/jackc/pgx/v5 v5.7.2
 	github.com/pgvector/pgvector-go v0.3.0
 	github.com/stretchr/testify v1.10.0
-	trpc.group/trpc-go/trpc-agent-go v0.1.2
+	trpc.group/trpc-go/trpc-agent-go v0.2.2
 )
 
 require (
