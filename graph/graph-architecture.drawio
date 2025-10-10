@@ -1,381 +1,232 @@
 <mxfile host="app.diagrams.net" modified="2025-10-10T00:00:00.000Z" agent="draw.io" version="21.0.0" etag="drawio-diagram" type="device">
-  <diagram name="trpc-agent-go Graph - Pregel 架构" id="pregel-arch">
-    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" math="0" shadow="0">
+  <diagram name="trpc-agent-go Graph 核心架构" id="core-arch">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
         
         <!-- Title -->
-        <mxCell id="title" value="trpc-agent-go Graph 架构：Pregel 风格 + State 合并" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=26;fontStyle=1;fontColor=#0066CC;" vertex="1" parent="1">
-          <mxGeometry x="400" y="30" width="1000" height="50" as="geometry"/>
+        <mxCell id="title" value="trpc-agent-go Graph 核心架构" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=32;fontStyle=1;fontColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="400" y="40" width="800" height="60" as="geometry"/>
         </mxCell>
         
-        <!-- ========== 左侧：Graph 结构层 ========== -->
-        <mxCell id="structure-layer" value="图结构层" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=#E1F5FE;strokeColor=#01579B;strokeWidth=3;fontSize=16;fontColor=#01579B;" vertex="1" parent="1">
-          <mxGeometry x="80" y="120" width="380" height="480" as="geometry"/>
+        <!-- ==================== 核心机制 1: Pregel 执行模型 ==================== -->
+        <mxCell id="pregel-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=4;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="120" y="160" width="480" height="360" as="geometry"/>
         </mxCell>
         
-        <mxCell id="graph-def" value="Graph Definition" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1976D2;strokeWidth=2;fontSize=14;fontStyle=1;" vertex="1" parent="structure-layer">
-          <mxGeometry x="30" y="60" width="320" height="60" as="geometry"/>
+        <mxCell id="pregel-title" value="① Pregel 超步执行模型" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;fontColor=#E65100;" vertex="1" parent="1">
+          <mxGeometry x="160" y="180" width="400" height="40" as="geometry"/>
         </mxCell>
         
-        <mxCell id="nodes-box" value="Nodes（节点集合）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90CAF9;strokeColor=#1565C0;strokeWidth=2;fontSize=13;" vertex="1" parent="structure-layer">
-          <mxGeometry x="30" y="150" width="150" height="80" as="geometry"/>
+        <!-- Superstep cycle -->
+        <mxCell id="superstep-box" value="超步循环（Superstep）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#EF6C00;strokeWidth=3;fontSize=16;fontStyle=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="180" y="250" width="360" height="50" as="geometry"/>
         </mxCell>
         
-        <mxCell id="nodes-detail" value="• ID &amp; Function&#10;• Triggers（触发器）&#10;• Channels（读取）&#10;• Writers（写入）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;" vertex="1" parent="structure-layer">
-          <mxGeometry x="35" y="165" width="140" height="60" as="geometry"/>
+        <!-- Node Execution -->
+        <mxCell id="node-exec" value="节点并行执行" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCC80;strokeColor=#F57C00;strokeWidth=2;fontSize=15;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="330" width="150" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="node-exec-detail" value="• 触发器激活&#10;• 读取 Channel&#10;• 执行函数" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="205" y="340" width="140" height="45" as="geometry"/>
         </mxCell>
         
-        <mxCell id="edges-box" value="Edges（边/路由）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90CAF9;strokeColor=#1565C0;strokeWidth=2;fontSize=13;" vertex="1" parent="structure-layer">
-          <mxGeometry x="200" y="150" width="150" height="80" as="geometry"/>
+        <!-- Message Passing -->
+        <mxCell id="msg-pass" value="消息传递" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCC80;strokeColor=#F57C00;strokeWidth=2;fontSize=15;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="370" y="330" width="150" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="msg-detail" value="• 写 Channel&#10;• 路由下一节点&#10;• 触发条件" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="375" y="340" width="140" height="45" as="geometry"/>
         </mxCell>
         
-        <mxCell id="edges-detail" value="• 静态边&#10;• 条件边&#10;• 多路由边&#10;• 目标节点映射" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;" vertex="1" parent="structure-layer">
-          <mxGeometry x="205" y="165" width="140" height="60" as="geometry"/>
+        <!-- Iteration -->
+        <mxCell id="iteration" value="迭代执行直到终止 (__end__)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;strokeWidth=2;fontSize=14;fontStyle=2;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="420" width="320" height="50" as="geometry"/>
         </mxCell>
         
-        <mxCell id="channel-mgr-box" value="Channel Manager（通道管理器）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64B5F6;strokeColor=#0D47A1;strokeWidth=2;fontSize=13;fontStyle=1;" vertex="1" parent="structure-layer">
-          <mxGeometry x="30" y="260" width="320" height="50" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="channel-detail" value="• 管理节点间通信通道&#10;• 触发器映射：Channel → Nodes&#10;• 支持多种通道行为（Last Value、Sequence 等）" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;" vertex="1" parent="structure-layer">
-          <mxGeometry x="35" y="270" width="310" height="50" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="state-schema-box" value="State Schema（状态模式）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64B5F6;strokeColor=#0D47A1;strokeWidth=2;fontSize=13;fontStyle=1;" vertex="1" parent="structure-layer">
-          <mxGeometry x="30" y="340" width="320" height="50" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="schema-detail" value="• 定义状态字段和类型&#10;• 字段级别的 Reducer 函数&#10;• 状态验证规则" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=11;" vertex="1" parent="structure-layer">
-          <mxGeometry x="35" y="350" width="310" height="50" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="entry-point" value="Entry Point: __start__ → 首节点" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#42A5F5;strokeColor=#01579B;strokeWidth=2;fontSize=12;fontStyle=2;" vertex="1" parent="structure-layer">
-          <mxGeometry x="30" y="420" width="320" height="40" as="geometry"/>
-        </mxCell>
-        
-        <!-- ========== 中间：Pregel 执行模型 ========== -->
-        <mxCell id="pregel-layer" value="Pregel 执行模型（超步迭代）" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=#FFF3E0;strokeColor=#E65100;strokeWidth=3;fontSize=16;fontColor=#E65100;" vertex="1" parent="1">
-          <mxGeometry x="520" y="120" width="680" height="480" as="geometry"/>
-        </mxCell>
-        
-        <!-- Superstep Box -->
-        <mxCell id="superstep-title" value="超步执行循环（Superstep Iteration）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;fontColor=#BF360C;" vertex="1" parent="pregel-layer">
-          <mxGeometry x="140" y="55" width="400" height="30" as="geometry"/>
-        </mxCell>
-        
-        <!-- Phase 1: Node Execution -->
-        <mxCell id="phase1-box" value="Phase 1: 节点执行" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#EF6C00;strokeWidth=2;fontSize=13;fontStyle=1;arcSize=10;" vertex="1" parent="pregel-layer">
-          <mxGeometry x="40" y="100" width="280" height="50" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="phase1-content" value="并行执行" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#FFECB3;strokeColor=#F57C00;fontSize=11;" vertex="1" parent="pregel-layer">
-          <mxGeometry x="40" y="160" width="280" height="110" as="geometry"/>
-        </mxCell>
-        <mxCell id="phase1-1" value="① 检查触发条件（Trigger Channels）" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;fontSize=11;" vertex="1" parent="phase1-content">
-          <mxGeometry y="26" width="280" height="21" as="geometry"/>
-        </mxCell>
-        <mxCell id="phase1-2" value="② 读取通道数据（Read Channels）" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;fontSize=11;" vertex="1" parent="phase1-content">
-          <mxGeometry y="47" width="280" height="21" as="geometry"/>
-        </mxCell>
-        <mxCell id="phase1-3" value="③ 执行节点函数（NodeFunc）" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;fontSize=11;" vertex="1" parent="phase1-content">
-          <mxGeometry y="68" width="280" height="21" as="geometry"/>
-        </mxCell>
-        <mxCell id="phase1-4" value="④ 产生 Pending Writes" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;fontSize=11;" vertex="1" parent="phase1-content">
-          <mxGeometry y="89" width="280" height="21" as="geometry"/>
-        </mxCell>
-        
-        <!-- Phase 2: State Merge -->
-        <mxCell id="phase2-box" value="Phase 2: 状态合并" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#EF6C00;strokeWidth=2;fontSize=13;fontStyle=1;arcSize=10;" vertex="1" parent="pregel-layer">
-          <mxGeometry x="360" y="100" width="280" height="50" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="phase2-content" value="顺序合并" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#FFECB3;strokeColor=#F57C00;fontSize=11;" vertex="1" parent="pregel-layer">
-          <mxGeometry x="360" y="160" width="280" height="110" as="geometry"/>
-        </mxCell>
-        <mxCell id="phase2-1" value="① 收集所有 Pending Writes" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;fontSize=11;" vertex="1" parent="phase2-content">
-          <mxGeometry y="26" width="280" height="21" as="geometry"/>
-        </mxCell>
-        <mxCell id="phase2-2" value="② 按字段分组" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;fontSize=11;" vertex="1" parent="phase2-content">
-          <mxGeometry y="47" width="280" height="21" as="geometry"/>
-        </mxCell>
-        <mxCell id="phase2-3" value="③ 调用字段 Reducer 合并" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;fontSize=11;" vertex="1" parent="phase2-content">
-          <mxGeometry y="68" width="280" height="21" as="geometry"/>
-        </mxCell>
-        <mxCell id="phase2-4" value="④ 更新全局 State" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;fontSize=11;" vertex="1" parent="phase2-content">
-          <mxGeometry y="89" width="280" height="21" as="geometry"/>
-        </mxCell>
-        
-        <!-- Routing -->
-        <mxCell id="routing-box" value="路由决策（Routing）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCC80;strokeColor=#E65100;strokeWidth=2;fontSize=13;fontStyle=1;arcSize=10;" vertex="1" parent="pregel-layer">
-          <mxGeometry x="40" y="300" width="600" height="40" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="routing-detail" value="静态边 Edge / 条件边 ConditionalEdge / 动态路由 Command.GoTo" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontStyle=2;" vertex="1" parent="pregel-layer">
-          <mxGeometry x="40" y="310" width="600" height="25" as="geometry"/>
-        </mxCell>
-        
-        <!-- Next Superstep -->
-        <mxCell id="next-step-box" value="决定下一超步的节点" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;strokeWidth=2;fontSize=13;fontStyle=1;arcSize=10;" vertex="1" parent="pregel-layer">
-          <mxGeometry x="40" y="360" width="280" height="40" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="terminate-box" value="终止条件：__end__" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB74D;strokeColor=#E65100;strokeWidth=2;fontSize=13;fontStyle=1;arcSize=10;" vertex="1" parent="pregel-layer">
-          <mxGeometry x="360" y="360" width="280" height="40" as="geometry"/>
-        </mxCell>
-        
-        <!-- Channel Update -->
-        <mxCell id="channel-update-box" value="通道更新（Writers → Channels）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFA726;strokeColor=#BF360C;strokeWidth=2;fontSize=13;fontStyle=1;" vertex="1" parent="pregel-layer">
-          <mxGeometry x="40" y="420" width="600" height="40" as="geometry"/>
-        </mxCell>
-        
-        <!-- Arrow between phases -->
-        <mxCell id="arrow-phase1-phase2" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=3;strokeColor=#E65100;" edge="1" parent="pregel-layer" source="phase1-box" target="phase2-box">
+        <!-- Loop arrow -->
+        <mxCell id="loop-arrow" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=4;strokeColor=#F57C00;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="iteration" target="superstep-box">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="320" y="125" as="sourcePoint"/>
-            <mxPoint x="360" y="125" as="targetPoint"/>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="arrow-label1" value="Pending&#10;Writes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=1;fontColor=#BF360C;" vertex="1" connectable="0" parent="arrow-phase1-phase2">
-          <mxGeometry x="-0.1" y="1" relative="1" as="geometry">
-            <mxPoint y="-10" as="offset"/>
-          </mxGeometry>
-        </mxCell>
-        
-        <!-- Arrow phase2 to routing -->
-        <mxCell id="arrow-phase2-routing" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=3;strokeColor=#E65100;" edge="1" parent="pregel-layer" source="phase2-content" target="routing-box">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="500" y="280" as="sourcePoint"/>
-            <mxPoint x="340" y="300" as="targetPoint"/>
-          </mxGeometry>
-        </mxCell>
-        
-        <!-- Loop back arrow -->
-        <mxCell id="loop-arrow" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=3;strokeColor=#F57C00;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="pregel-layer" source="next-step-box" target="phase1-box">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="0" y="380" as="sourcePoint"/>
-            <mxPoint x="0" y="125" as="targetPoint"/>
+            <mxPoint x="160" y="445" as="sourcePoint"/>
+            <mxPoint x="160" y="275" as="targetPoint"/>
             <Array as="points">
-              <mxPoint x="10" y="380"/>
-              <mxPoint x="10" y="125"/>
+              <mxPoint x="150" y="445"/>
+              <mxPoint x="150" y="275"/>
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="loop-label" value="下一超步" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=1;fontColor=#E65100;" vertex="1" connectable="0" parent="loop-arrow">
+        <mxCell id="loop-label" value="下一超步" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=14;fontStyle=1;fontColor=#E65100;" vertex="1" connectable="0" parent="loop-arrow">
           <mxGeometry x="-0.2" y="2" relative="1" as="geometry">
-            <mxPoint x="-18" y="-2" as="offset"/>
+            <mxPoint x="-25" as="offset"/>
           </mxGeometry>
         </mxCell>
         
-        <!-- ========== 右侧：State 合并机制 ========== -->
-        <mxCell id="state-merge-layer" value="State 合并机制" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=40;fillColor=#F3E5F5;strokeColor=#4A148C;strokeWidth=3;fontSize=16;fontColor=#4A148C;" vertex="1" parent="1">
-          <mxGeometry x="1260" y="120" width="460" height="480" as="geometry"/>
+        <!-- ==================== 核心机制 2: State 合并 ==================== -->
+        <mxCell id="state-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#4A148C;strokeWidth=4;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="680" y="160" width="480" height="360" as="geometry"/>
         </mxCell>
         
-        <mxCell id="reducer-title" value="Reducer 函数（字段级合并策略）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=13;fontStyle=1;fontColor=#6A1B9A;" vertex="1" parent="state-merge-layer">
-          <mxGeometry x="60" y="55" width="340" height="30" as="geometry"/>
+        <mxCell id="state-title" value="② State 合并机制" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;fontColor=#4A148C;" vertex="1" parent="1">
+          <mxGeometry x="720" y="180" width="400" height="40" as="geometry"/>
         </mxCell>
         
-        <mxCell id="reducer-example1" value="Reducer: APPEND（追加）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="state-merge-layer">
-          <mxGeometry x="40" y="100" width="380" height="40" as="geometry"/>
+        <!-- Concurrent Writes -->
+        <mxCell id="concurrent-writes" value="并发写入冲突" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;fontSize=15;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="740" y="250" width="360" height="50" as="geometry"/>
         </mxCell>
-        <mxCell id="reducer-ex1-detail" value="messages: [&quot;A&quot;] + [&quot;B&quot;] → [&quot;A&quot;, &quot;B&quot;]" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontFamily=Courier New;" vertex="1" parent="state-merge-layer">
-          <mxGeometry x="40" y="145" width="380" height="25" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="reducer-example2" value="Reducer: LAST（保留最后）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="state-merge-layer">
-          <mxGeometry x="40" y="180" width="380" height="40" as="geometry"/>
-        </mxCell>
-        <mxCell id="reducer-ex2-detail" value="status: &quot;pending&quot; + &quot;done&quot; → &quot;done&quot;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontFamily=Courier New;" vertex="1" parent="state-merge-layer">
-          <mxGeometry x="40" y="225" width="380" height="25" as="geometry"/>
+        <mxCell id="concurrent-detail" value="多个节点同时更新同一状态字段" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=12;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="740" y="260" width="360" height="30" as="geometry"/>
         </mxCell>
         
-        <mxCell id="reducer-example3" value="Reducer: SUM（累加）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="state-merge-layer">
-          <mxGeometry x="40" y="260" width="380" height="40" as="geometry"/>
-        </mxCell>
-        <mxCell id="reducer-ex3-detail" value="count: 5 + 3 → 8" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontFamily=Courier New;" vertex="1" parent="state-merge-layer">
-          <mxGeometry x="40" y="305" width="380" height="25" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="reducer-example4" value="Reducer: CUSTOM（自定义）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#7B1FA2;strokeWidth=2;fontSize=12;fontStyle=1;" vertex="1" parent="state-merge-layer">
-          <mxGeometry x="40" y="340" width="380" height="40" as="geometry"/>
-        </mxCell>
-        <mxCell id="reducer-ex4-detail" value="func(old, new) any { /* 自定义逻辑 */ }" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=11;fontFamily=Courier New;" vertex="1" parent="state-merge-layer">
-          <mxGeometry x="40" y="385" width="380" height="25" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="merge-feature" value="并发安全的状态合并" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CE93D8;strokeColor=#6A1B9A;strokeWidth=2;fontSize=13;fontStyle=1;" vertex="1" parent="state-merge-layer">
-          <mxGeometry x="40" y="430" width="380" height="35" as="geometry"/>
-        </mxCell>
-        
-        <!-- ========== 底部：执行流程和特点 ========== -->
-        <mxCell id="execution-flow" value="执行流程总结" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=35;fillColor=#E8F5E9;strokeColor=#1B5E20;strokeWidth=2;fontSize=14;fontColor=#1B5E20;" vertex="1" parent="1">
-          <mxGeometry x="80" y="650" width="1640" height="140" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="flow-step1" value="1. 构建图" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=1;fontSize=12;arcSize=15;" vertex="1" parent="execution-flow">
-          <mxGeometry x="20" y="50" width="150" height="70" as="geometry"/>
-        </mxCell>
-        <mxCell id="flow-step1-detail" value="添加节点、边&#10;定义通道&#10;配置 Schema" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;" vertex="1" parent="execution-flow">
-          <mxGeometry x="20" y="60" width="150" height="50" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="arrow-f1-f2" value="→" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=24;fontStyle=1;fontColor=#2E7D32;" vertex="1" parent="execution-flow">
-          <mxGeometry x="175" y="70" width="30" height="30" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="flow-step2" value="2. 编译" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=1;fontSize=12;arcSize=15;" vertex="1" parent="execution-flow">
-          <mxGeometry x="210" y="50" width="150" height="70" as="geometry"/>
-        </mxCell>
-        <mxCell id="flow-step2-detail" value="验证图结构&#10;生成运行时表示" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;" vertex="1" parent="execution-flow">
-          <mxGeometry x="210" y="65" width="150" height="40" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="arrow-f2-f3" value="→" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=24;fontStyle=1;fontColor=#2E7D32;" vertex="1" parent="execution-flow">
-          <mxGeometry x="365" y="70" width="30" height="30" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="flow-step3" value="3. 初始化" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=1;fontSize=12;arcSize=15;" vertex="1" parent="execution-flow">
-          <mxGeometry x="400" y="50" width="150" height="70" as="geometry"/>
-        </mxCell>
-        <mxCell id="flow-step3-detail" value="创建 ExecutionCtx&#10;初始化 State" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;" vertex="1" parent="execution-flow">
-          <mxGeometry x="400" y="65" width="150" height="40" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="arrow-f3-f4" value="→" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=24;fontStyle=1;fontColor=#2E7D32;" vertex="1" parent="execution-flow">
-          <mxGeometry x="555" y="70" width="30" height="30" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="flow-step4" value="4. 超步执行" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#AED581;strokeColor=#33691E;strokeWidth=2;fontSize=12;arcSize=15;fontStyle=1;" vertex="1" parent="execution-flow">
-          <mxGeometry x="590" y="50" width="250" height="70" as="geometry"/>
-        </mxCell>
-        <mxCell id="flow-step4-detail" value="节点执行 → 状态合并 →&#10;路由决策 → 下一超步&#10;（循环直到 __end__）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;" vertex="1" parent="execution-flow">
-          <mxGeometry x="590" y="60" width="250" height="50" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="arrow-f4-f5" value="→" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=24;fontStyle=1;fontColor=#2E7D32;" vertex="1" parent="execution-flow">
-          <mxGeometry x="845" y="70" width="30" height="30" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="flow-step5" value="5. 返回结果" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=1;fontSize=12;arcSize=15;" vertex="1" parent="execution-flow">
-          <mxGeometry x="880" y="50" width="150" height="70" as="geometry"/>
-        </mxCell>
-        <mxCell id="flow-step5-detail" value="最终 State&#10;执行事件" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=10;" vertex="1" parent="execution-flow">
-          <mxGeometry x="880" y="65" width="150" height="40" as="geometry"/>
-        </mxCell>
-        
-        <!-- ========== 架构特点 ========== -->
-        <mxCell id="features-box" value="架构特点" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=35;fillColor=#FFF9C4;strokeColor=#F57F17;strokeWidth=2;fontSize=14;fontColor=#F57F17;" vertex="1" parent="1">
-          <mxGeometry x="80" y="830" width="800" height="200" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="feature1" value="✓ Pregel 风格的消息传递模型" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;fontSize=13;fontStyle=1;" vertex="1" parent="features-box">
-          <mxGeometry y="45" width="800" height="28" as="geometry"/>
-        </mxCell>
-        <mxCell id="feature1-detail" value="     通过 Channel 和 Trigger 机制实现节点间的解耦通信" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;fontSize=11;" vertex="1" parent="features-box">
-          <mxGeometry y="70" width="800" height="20" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="feature2" value="✓ 字段级状态合并机制" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;fontSize=13;fontStyle=1;" vertex="1" parent="features-box">
-          <mxGeometry y="95" width="800" height="28" as="geometry"/>
-        </mxCell>
-        <mxCell id="feature2-detail" value="     支持多种 Reducer 策略，处理并发写入冲突" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;fontSize=11;" vertex="1" parent="features-box">
-          <mxGeometry y="120" width="800" height="20" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="feature3" value="✓ 灵活的路由机制" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;fontSize=13;fontStyle=1;" vertex="1" parent="features-box">
-          <mxGeometry y="145" width="800" height="28" as="geometry"/>
-        </mxCell>
-        <mxCell id="feature3-detail" value="     静态边、条件边、动态路由（Command）相结合" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;fontSize=11;" vertex="1" parent="features-box">
-          <mxGeometry y="170" width="800" height="20" as="geometry"/>
-        </mxCell>
-        
-        <!-- ========== Pregel 核心概念 ========== -->
-        <mxCell id="pregel-concepts" value="Pregel 核心概念" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=35;fillColor=#E0F2F1;strokeColor=#004D40;strokeWidth=2;fontSize=14;fontColor=#004D40;" vertex="1" parent="1">
-          <mxGeometry x="920" y="830" width="800" height="200" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="concept1" value="超步（Superstep）" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;fontSize=13;fontStyle=1;" vertex="1" parent="pregel-concepts">
-          <mxGeometry y="45" width="800" height="25" as="geometry"/>
-        </mxCell>
-        <mxCell id="concept1-detail" value="     每个超步包含：节点并行执行 + 状态合并 + 路由决策" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;fontSize=11;" vertex="1" parent="pregel-concepts">
-          <mxGeometry y="67" width="800" height="20" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="concept2" value="消息传递（Message Passing）" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;fontSize=13;fontStyle=1;" vertex="1" parent="pregel-concepts">
-          <mxGeometry y="92" width="800" height="25" as="geometry"/>
-        </mxCell>
-        <mxCell id="concept2-detail" value="     节点通过 Channel 读写数据，通过 Trigger 机制激活其他节点" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;fontSize=11;" vertex="1" parent="pregel-concepts">
-          <mxGeometry y="114" width="800" height="20" as="geometry"/>
-        </mxCell>
-        
-        <mxCell id="concept3" value="迭代计算（Iterative Computation）" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;fontSize=13;fontStyle=1;" vertex="1" parent="pregel-concepts">
-          <mxGeometry y="139" width="800" height="25" as="geometry"/>
-        </mxCell>
-        <mxCell id="concept3-detail" value="     超步循环执行，直到达到终止条件（__end__ 节点）" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=4;overflow=hidden;fontSize=11;" vertex="1" parent="pregel-concepts">
-          <mxGeometry y="161" width="800" height="20" as="geometry"/>
-        </mxCell>
-        
-        <!-- ========== Connection Arrows ========== -->
-        <!-- Graph to Pregel -->
-        <mxCell id="conn1" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=3;strokeColor=#1976D2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="graph-def" target="phase1-box">
+        <!-- Arrow down -->
+        <mxCell id="arrow-down1" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=3;strokeColor=#7B1FA2;" edge="1" parent="1" source="concurrent-writes" target="reducer-box">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="470" y="215" as="sourcePoint"/>
-            <mxPoint x="520" y="215" as="targetPoint"/>
+            <mxPoint x="920" y="310" as="sourcePoint"/>
+            <mxPoint x="920" y="340" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="conn1-label" value="驱动执行" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontStyle=1;fontColor=#01579B;" vertex="1" connectable="0" parent="conn1">
+        
+        <!-- Reducer -->
+        <mxCell id="reducer-box" value="Reducer 函数（字段级合并策略）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CE93D8;strokeColor=#6A1B9A;strokeWidth=3;fontSize=15;fontStyle=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="740" y="340" width="360" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- Reducer examples -->
+        <mxCell id="reducer-examples" value="APPEND：追加数组  |  LAST：保留最新  |  SUM：累加  |  CUSTOM：自定义" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=12;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="745" y="400" width="350" height="30" as="geometry"/>
+        </mxCell>
+        
+        <!-- Arrow down -->
+        <mxCell id="arrow-down2" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=3;strokeColor=#7B1FA2;" edge="1" parent="1" source="reducer-examples" target="merged-state">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="920" y="440" as="sourcePoint"/>
+            <mxPoint x="920" y="460" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Merged State -->
+        <mxCell id="merged-state" value="一致的全局 State" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BA68C8;strokeColor=#6A1B9A;strokeWidth=2;fontSize=15;fontStyle=1;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="740" y="450" width="360" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- ==================== 核心机制 3: Checkpoint 机制 ==================== -->
+        <mxCell id="checkpoint-container" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#1B5E20;strokeWidth=4;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="120" y="600" width="1040" height="320" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="checkpoint-title" value="③ Checkpoint 持久化机制" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=22;fontStyle=1;fontColor=#1B5E20;" vertex="1" parent="1">
+          <mxGeometry x="430" y="620" width="500" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- Checkpoint flow -->
+        <mxCell id="cp-save" value="保存 Checkpoint" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=2;fontSize=15;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="700" width="180" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="cp-save-detail" value="• State 快照&#10;• Channel 状态&#10;• 执行位置&#10;• 版本信息" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="210" y="710" width="160" height="65" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="cp-storage" value="持久化存储" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#388E3C;strokeWidth=2;fontSize=15;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="460" y="700" width="180" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="cp-storage-detail" value="• 数据库&#10;• 文件系统&#10;• 内存缓存&#10;• 可扩展接口" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="470" y="710" width="160" height="65" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="cp-restore" value="恢复执行" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;strokeWidth=2;fontSize=15;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="720" y="700" width="180" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="cp-restore-detail" value="• 加载快照&#10;• 恢复 State&#10;• 继续执行&#10;• 容错保障" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="730" y="710" width="160" height="65" as="geometry"/>
+        </mxCell>
+        
+        <!-- Checkpoint arrows -->
+        <mxCell id="cp-arrow1" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=3;strokeColor=#2E7D32;" edge="1" parent="1" source="cp-save" target="cp-storage">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="740" as="sourcePoint"/>
+            <mxPoint x="460" y="740" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cp-arrow1-label" value="写入" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=13;fontStyle=1;fontColor=#2E7D32;" vertex="1" connectable="0" parent="cp-arrow1">
           <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
             <mxPoint y="-12" as="offset"/>
           </mxGeometry>
         </mxCell>
         
-        <!-- Pregel to State Merge -->
-        <mxCell id="conn2" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=3;strokeColor=#7B1FA2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;dashPattern=8 8;" edge="1" parent="1" source="phase2-box" target="reducer-title">
+        <mxCell id="cp-arrow2" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=3;strokeColor=#2E7D32;" edge="1" parent="1" source="cp-storage" target="cp-restore">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="1210" y="245" as="sourcePoint"/>
-            <mxPoint x="1260" y="245" as="targetPoint"/>
+            <mxPoint x="640" y="740" as="sourcePoint"/>
+            <mxPoint x="720" y="740" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
-        <mxCell id="conn2-label" value="应用 Reducer" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontStyle=1;fontColor=#6A1B9A;" vertex="1" connectable="0" parent="conn2">
+        <mxCell id="cp-arrow2-label" value="读取" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=13;fontStyle=1;fontColor=#2E7D32;" vertex="1" connectable="0" parent="cp-arrow2">
           <mxGeometry x="-0.1" y="2" relative="1" as="geometry">
             <mxPoint y="-12" as="offset"/>
           </mxGeometry>
         </mxCell>
         
-        <!-- State Schema to Reducer -->
-        <mxCell id="conn3" value="" style="endArrow=open;endFill=0;html=1;strokeWidth=2;strokeColor=#9C27B0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="state-schema-box" target="reducer-example1">
+        <!-- Benefits -->
+        <mxCell id="cp-benefits" value="✓ 容错恢复    ✓ 长时间运行任务    ✓ 人机交互中断    ✓ 分布式协作    ✓ 时间旅行调试" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81C784;strokeColor=#1B5E20;strokeWidth=2;fontSize=14;fontStyle=2;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="200" y="820" width="700" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- ==================== 系统集成箭头 ==================== -->
+        
+        <!-- Pregel to State -->
+        <mxCell id="integration1" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=4;strokeColor=#6A1B9A;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="msg-pass" target="concurrent-writes">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="470" y="485" as="sourcePoint"/>
-            <mxPoint x="1260" y="240" as="targetPoint"/>
+            <mxPoint x="530" y="340" as="sourcePoint"/>
+            <mxPoint x="680" y="275" as="targetPoint"/>
             <Array as="points">
-              <mxPoint x="1220" y="485"/>
-              <mxPoint x="1220" y="240"/>
+              <mxPoint x="640" y="360"/>
+              <mxPoint x="640" y="275"/>
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="conn3-label" value="定义 Reducer" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=1;fontColor=#7B1FA2;" vertex="1" connectable="0" parent="conn3">
-          <mxGeometry x="0.6" y="2" relative="1" as="geometry">
-            <mxPoint x="-7" y="-12" as="offset"/>
+        <mxCell id="integration1-label" value="Pending Writes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=14;fontStyle=1;fontColor=#6A1B9A;labelBackgroundColor=#FFFFFF;" vertex="1" connectable="0" parent="integration1">
+          <mxGeometry x="-0.3" y="2" relative="1" as="geometry">
+            <mxPoint x="10" y="-12" as="offset"/>
           </mxGeometry>
         </mxCell>
         
-        <!-- Channel Manager to Phase 1 -->
-        <mxCell id="conn4" value="" style="endArrow=open;endFill=0;html=1;strokeWidth=2;strokeColor=#0288D1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="channel-mgr-box" target="phase1-content">
+        <!-- State to Checkpoint -->
+        <mxCell id="integration2" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=4;strokeColor=#2E7D32;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="merged-state" target="cp-save">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="470" y="405" as="sourcePoint"/>
-            <mxPoint x="560" y="300" as="targetPoint"/>
+            <mxPoint x="920" y="520" as="sourcePoint"/>
+            <mxPoint x="290" y="680" as="targetPoint"/>
             <Array as="points">
-              <mxPoint x="500" y="405"/>
-              <mxPoint x="500" y="315"/>
+              <mxPoint x="920" y="560"/>
+              <mxPoint x="290" y="560"/>
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="conn4-label" value="触发/读取" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=1;fontColor=#01579B;" vertex="1" connectable="0" parent="conn4">
-          <mxGeometry x="0.3" y="1" relative="1" as="geometry">
-            <mxPoint x="-1" y="-11" as="offset"/>
+        <mxCell id="integration2-label" value="快照保存" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=14;fontStyle=1;fontColor=#2E7D32;labelBackgroundColor=#FFFFFF;" vertex="1" connectable="0" parent="integration2">
+          <mxGeometry x="-0.5" y="2" relative="1" as="geometry">
+            <mxPoint x="-120" y="-12" as="offset"/>
           </mxGeometry>
+        </mxCell>
+        
+        <!-- Checkpoint to Pregel -->
+        <mxCell id="integration3" value="" style="endArrow=block;endFill=1;html=1;strokeWidth=4;strokeColor=#EF6C00;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="cp-restore" target="iteration">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="810" y="680" as="sourcePoint"/>
+            <mxPoint x="360" y="490" as="targetPoint"/>
+            <Array as="points">
+              <mxPoint x="810" y="560"/>
+              <mxPoint x="360" y="560"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="integration3-label" value="恢复执行" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=14;fontStyle=1;fontColor=#EF6C00;labelBackgroundColor=#FFFFFF;" vertex="1" connectable="0" parent="integration3">
+          <mxGeometry x="0.5" y="2" relative="1" as="geometry">
+            <mxPoint x="110" y="-12" as="offset"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- ==================== 底部总结 ==================== -->
+        <mxCell id="summary" value="三大核心机制协同工作：Pregel 驱动计算流程 → State 合并保证一致性 → Checkpoint 提供持久化和容错" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFDE7;strokeColor=#F57F17;strokeWidth=3;fontSize=16;fontStyle=2;arcSize=5;fontColor=#F57F17;" vertex="1" parent="1">
+          <mxGeometry x="120" y="970" width="1040" height="60" as="geometry"/>
         </mxCell>
         
       </root>
