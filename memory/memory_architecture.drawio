@@ -1,0 +1,264 @@
+<mxfile host="app.diagrams.net" modified="2025-10-12T00:00:00.000Z" agent="Manual" version="22.0.0" etag="manual" type="device">
+  <diagram name="Memory Architecture" id="memory-arch">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- 标题 -->
+        <mxCell id="title" value="trpc-agent-go Memory Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="600" y="20" width="600" height="40" as="geometry" />
+        </mxCell>
+        
+        <!-- 第一层: 用户层 -->
+        <mxCell id="user-layer" value="User Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F4F8;strokeColor=#0277BD;strokeWidth=3;fontSize=18;fontStyle=1;arcSize=15;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="250" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- 第二层: Runner 层 -->
+        <mxCell id="runner-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF4E6;strokeColor=#F57C00;strokeWidth=3;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="1720" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="runner-title" value="Runner (Session Manager)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="600" y="210" width="600" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="runner-desc1" value="• Manage session state (SessionID)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="600" y="245" width="600" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="runner-desc2" value="• Coordinate Agent and Memory Service" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="600" y="270" width="600" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="runner-desc3" value="• Handle event stream (EventChan)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="600" y="295" width="600" height="25" as="geometry" />
+        </mxCell>
+        
+        <!-- 第三层: LLM Agent -->
+        <mxCell id="agent-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#388E3C;strokeWidth=3;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="390" width="600" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="agent-title" value="LLM Agent" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="280" y="400" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="agent-item1" value="• Process user messages" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="445" width="560" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="agent-item2" value="• Decide to use Memory Tools" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="475" width="560" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="agent-item3" value="• Generate responses" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="505" width="560" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="agent-item4" value="• Execute tool calls" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="535" width="560" height="25" as="geometry" />
+        </mxCell>
+        
+        <!-- 第三层: Memory Tools -->
+        <mxCell id="tools-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;strokeWidth=3;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="760" y="390" width="900" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="tools-title" value="Memory Tools" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1010" y="400" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="tool1" value="• memory_add - Add memory" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="445" width="860" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tool2" value="• memory_update - Update memory" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="467" width="860" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tool3" value="• memory_search - Search memory" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="489" width="860" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tool4" value="• memory_load - Load memory" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="511" width="860" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tool5" value="• memory_delete - Delete memory" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="533" width="860" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tool6" value="• memory_clear - Clear memories" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="780" y="555" width="860" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- 第四层: Memory Service Interface -->
+        <mxCell id="service-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;strokeWidth=3;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="200" y="660" width="1400" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="service-title" value="Memory Service Interface" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="600" y="670" width="600" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="service-methods1" value="AddMemory | UpdateMemory | DeleteMemory | ClearMemories" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="300" y="710" width="1200" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="service-methods2" value="ReadMemories | SearchMemories | Tools()" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="300" y="740" width="1200" height="25" as="geometry" />
+        </mxCell>
+        
+        <!-- 第五层: 存储实现 - InMemory -->
+        <mxCell id="inmemory-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#C2185B;strokeWidth=3;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="150" y="860" width="550" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="inmemory-title" value="InMemory Implementation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="225" y="870" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="inmemory-item1" value="• In-memory storage" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="170" y="915" width="510" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="inmemory-item2" value="• Fast access" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="170" y="945" width="510" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="inmemory-item3" value="• For testing/development" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="170" y="975" width="510" height="25" as="geometry" />
+        </mxCell>
+        
+        <!-- 第五层: 存储实现 - Redis -->
+        <mxCell id="redis-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE4EC;strokeColor=#C2185B;strokeWidth=3;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="800" y="860" width="800" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="redis-title" value="Redis Implementation" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1000" y="870" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="redis-item1" value="• Persistent storage" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="915" width="760" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="redis-item2" value="• Distributed support" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="945" width="760" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="redis-item3" value="• For production" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="820" y="975" width="760" height="25" as="geometry" />
+        </mxCell>
+        
+        <!-- 第六层: 数据结构 -->
+        <mxCell id="data-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFDE7;strokeColor=#F57F17;strokeWidth=3;arcSize=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1080" width="1600" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="data-title" value="Memory Data Structures" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="680" y="1090" width="400" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Entry 结构 -->
+        <mxCell id="entry-title" value="Entry:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="150" y="1135" width="100" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-item1" value="• ID: Unique identifier" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1165" width="400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-item2" value="• AppName: Application name" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1190" width="400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-item3" value="• UserID: User identifier" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1215" width="400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-item4" value="• Memory: Content" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1240" width="400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-item5" value="• CreatedAt/UpdatedAt" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1265" width="400" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Memory 结构 -->
+        <mxCell id="memory-title" value="Memory:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="650" y="1135" width="100" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="memory-item1" value="• Memory: Text content" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="650" y="1165" width="400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="memory-item2" value="• Topics: Tags[]" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="650" y="1190" width="400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="memory-item3" value="• LastUpdated: Time" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="650" y="1215" width="400" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Key 结构 -->
+        <mxCell id="key-title" value="Key:" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1150" y="1135" width="100" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="key-item1" value="• AppName" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="1165" width="400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="key-item2" value="• UserID" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="1190" width="400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="key-item3" value="• MemoryID" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="1215" width="400" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- 箭头连接 -->
+        <!-- User -> Runner -->
+        <mxCell id="arrow1" value="Message" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.05;entryY=0;entryDx=0;entryDy=0;strokeColor=#0277BD;strokeWidth=3;fontSize=12;fontColor=#0277BD;" edge="1" parent="1" source="user-layer" target="runner-layer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Runner -> Agent -->
+        <mxCell id="arrow2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F57C00;strokeWidth=3;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="runner-layer" target="agent-layer">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="380" y="350" as="sourcePoint" />
+            <mxPoint x="380" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Runner -> Tools -->
+        <mxCell id="arrow3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#F57C00;strokeWidth=3;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="runner-layer" target="tools-layer">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1210" y="350" as="sourcePoint" />
+            <mxPoint x="1210" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Agent <-> Tools -->
+        <mxCell id="arrow4" value="Tool Calls" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#388E3C;strokeWidth=3;fontSize=12;fontColor=#388E3C;startArrow=classic;startFill=1;" edge="1" parent="1" source="agent-layer" target="tools-layer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Tools -> Service -->
+        <mxCell id="arrow5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1976D2;strokeWidth=3;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="tools-layer" target="service-layer">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1210" y="610" as="sourcePoint" />
+            <mxPoint x="1210" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Agent -> Service -->
+        <mxCell id="arrow6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#388E3C;strokeWidth=3;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="agent-layer" target="service-layer">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="425" y="610" as="sourcePoint" />
+            <mxPoint x="550" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Service -> InMemory -->
+        <mxCell id="arrow7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7B1FA2;strokeWidth=3;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-layer" target="inmemory-layer">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="425" y="810" as="sourcePoint" />
+            <mxPoint x="425" y="860" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Service -> Redis -->
+        <mxCell id="arrow8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#7B1FA2;strokeWidth=3;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="service-layer" target="redis-layer">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1200" y="810" as="sourcePoint" />
+            <mxPoint x="1200" y="860" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- InMemory <-> Data -->
+        <mxCell id="arrow9" value="R/W" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C2185B;strokeWidth=2;fontSize=11;fontColor=#C2185B;startArrow=classic;startFill=1;" edge="1" parent="1" source="inmemory-layer" target="data-layer">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="425" y="1030" as="sourcePoint" />
+            <mxPoint x="425" y="1080" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Redis <-> Data -->
+        <mxCell id="arrow10" value="R/W" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#C2185B;strokeWidth=2;fontSize=11;fontColor=#C2185B;startArrow=classic;startFill=1;" edge="1" parent="1" source="redis-layer" target="data-layer">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1200" y="1030" as="sourcePoint" />
+            <mxPoint x="1200" y="1080" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+
