@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile agent="TRPC-Agent-Go Generator" etag="generated" host="app.diagrams.net" modified="2025-10-12T00:00:00.000Z" type="device" version="21.6.5">
+  <diagram id="trpc-agent-architecture" name="TRPC-Agent-Go Architecture">
+    <mxGraphModel arrows="1" connect="1" dx="1434" dy="780" fold="1" grid="1" gridSize="10" guides="1" math="0" page="1" pageHeight="3300" pageScale="1" pageWidth="2339" shadow="0" tooltips="1">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;fontStyle=1;" value="TRPC-Agent-Go Architecture" vertex="1">
+          <mxGeometry as="geometry" height="60" width="700" x="800" y="20"/>
+        </mxCell>
+        <mxCell id="3" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff4e6;swimlaneFillColor=#ffffff;fontSize=14;" value="Memory Layer (记忆管理)" vertex="1">
+          <mxGeometry as="geometry" height="280" width="700" x="50" y="120"/>
+        </mxCell>
+        <mxCell id="4" parent="3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d6b656;fontStyle=1;fontSize=12;" value="Memory Service
+记忆服务接口" vertex="1">
+          <mxGeometry as="geometry" height="80" width="280" x="70" y="170"/>
+        </mxCell>
+        <mxCell id="5" parent="3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd966;strokeColor=#d6b656;fontStyle=1;fontSize=12;" value="Memory Tools
+Add/Update/Delete
+Search/Load" vertex="1">
+          <mxGeometry as="geometry" height="80" width="260" x="370" y="170"/>
+        </mxCell>
+        <mxCell id="6" parent="3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=12;" value="Memory Entry
+ID/UserID/Content
+Topics" vertex="1">
+          <mxGeometry as="geometry" height="70" width="180" x="70" y="270"/>
+        </mxCell>
+        <mxCell id="7" parent="3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=12;" value="Redis
+Storage" vertex="1">
+          <mxGeometry as="geometry" height="70" width="170" x="270" y="270"/>
+        </mxCell>
+        <mxCell id="8" parent="3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=12;" value="InMemory
+Storage" vertex="1">
+          <mxGeometry as="geometry" height="70" width="170" x="460" y="270"/>
+        </mxCell>
+        <mxCell id="9" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e6ffe6;swimlaneFillColor=#ffffff;fontSize=14;" value="Knowledge Layer (知识库)" vertex="1">
+          <mxGeometry as="geometry" height="280" width="700" x="800" y="120"/>
+        </mxCell>
+        <mxCell id="10" parent="9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a6d96a;strokeColor=#82b543;fontStyle=1;fontSize=12;" value="Knowledge Service
+知识检索服务" vertex="1">
+          <mxGeometry as="geometry" height="80" width="280" x="820" y="170"/>
+        </mxCell>
+        <mxCell id="11" parent="9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a6d96a;strokeColor=#82b543;fontStyle=1;fontSize=12;" value="Search
+Semantic + RAG" vertex="1">
+          <mxGeometry as="geometry" height="80" width="260" x="1120" y="170"/>
+        </mxCell>
+        <mxCell id="12" parent="9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" value="Document
+文档管理" vertex="1">
+          <mxGeometry as="geometry" height="60" width="130" x="820" y="270"/>
+        </mxCell>
+        <mxCell id="13" parent="9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" value="Chunking
+文本分块" vertex="1">
+          <mxGeometry as="geometry" height="60" width="130" x="970" y="270"/>
+        </mxCell>
+        <mxCell id="14" parent="9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" value="Embedder
+向量化" vertex="1">
+          <mxGeometry as="geometry" height="60" width="130" x="1120" y="270"/>
+        </mxCell>
+        <mxCell id="15" parent="9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" value="Reranker
+重排序" vertex="1">
+          <mxGeometry as="geometry" height="60" width="130" x="1270" y="270"/>
+        </mxCell>
+        <mxCell id="16" parent="9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=12;" value="Vector Store 向量存储" vertex="1">
+          <mxGeometry as="geometry" height="50" width="260" x="970" y="340"/>
+        </mxCell>
+        <mxCell id="17" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ffe6f0;swimlaneFillColor=#ffffff;fontSize=14;" value="Tool Layer (工具系统)" vertex="1">
+          <mxGeometry as="geometry" height="280" width="700" x="1550" y="120"/>
+        </mxCell>
+        <mxCell id="18" parent="17" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb6c1;strokeColor=#ff8fa3;fontStyle=1;fontSize=12;" value="Function Tool
+函数工具" vertex="1">
+          <mxGeometry as="geometry" height="80" width="200" x="1570" y="170"/>
+        </mxCell>
+        <mxCell id="19" parent="17" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb6c1;strokeColor=#ff8fa3;fontStyle=1;fontSize=12;" value="Agent Tool
+代理工具" vertex="1">
+          <mxGeometry as="geometry" height="80" width="200" x="1790" y="170"/>
+        </mxCell>
+        <mxCell id="20" parent="17" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffb6c1;strokeColor=#ff8fa3;fontStyle=1;fontSize=12;" value="MCP Tool
+MCP协议" vertex="1">
+          <mxGeometry as="geometry" height="80" width="170" x="2010" y="170"/>
+        </mxCell>
+        <mxCell id="21" parent="17" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6f0;strokeColor=#ff99cc;fontStyle=1;fontSize=12;" value="DuckDuckGo
+搜索工具" vertex="1">
+          <mxGeometry as="geometry" height="70" width="200" x="1570" y="270"/>
+        </mxCell>
+        <mxCell id="22" parent="17" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6f0;strokeColor=#ff99cc;fontStyle=1;fontSize=12;" value="File Tool
+文件操作" vertex="1">
+          <mxGeometry as="geometry" height="70" width="200" x="1790" y="270"/>
+        </mxCell>
+        <mxCell id="23" parent="17" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6f0;strokeColor=#ff99cc;fontStyle=1;fontSize=12;" value="Transfer Tool
+转移工具" vertex="1">
+          <mxGeometry as="geometry" height="70" width="170" x="2010" y="270"/>
+        </mxCell>
+        <mxCell id="24" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e6f3ff;swimlaneFillColor=#ffffff;fontSize=14;" value="Agent Layer (核心代理层)" vertex="1">
+          <mxGeometry as="geometry" height="280" width="1450" x="50" y="440"/>
+        </mxCell>
+        <mxCell id="25" parent="24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#87ceeb;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" value="LLM Agent
+基础LLM代理" vertex="1">
+          <mxGeometry as="geometry" height="90" width="280" x="80" y="490"/>
+        </mxCell>
+        <mxCell id="26" parent="24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#87ceeb;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" value="Graph Agent
+图结构代理" vertex="1">
+          <mxGeometry as="geometry" height="90" width="280" x="380" y="490"/>
+        </mxCell>
+        <mxCell id="27" parent="24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#87ceeb;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" value="A2A Agent
+代理间通信" vertex="1">
+          <mxGeometry as="geometry" height="90" width="280" x="680" y="490"/>
+        </mxCell>
+        <mxCell id="28" parent="24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#87ceeb;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" value="Parallel Agent
+并行执行代理" vertex="1">
+          <mxGeometry as="geometry" height="90" width="280" x="980" y="490"/>
+        </mxCell>
+        <mxCell id="29" parent="24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e0e6;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" value="Chain Agent
+链式执行代理" vertex="1">
+          <mxGeometry as="geometry" height="80" width="280" x="230" y="600"/>
+        </mxCell>
+        <mxCell id="30" parent="24" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b0e0e6;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" value="Cycle Agent
+循环执行代理" vertex="1">
+          <mxGeometry as="geometry" height="80" width="280" x="530" y="600"/>
+        </mxCell>
+        <mxCell id="31" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f0e6ff;swimlaneFillColor=#ffffff;fontSize=14;" value="Model Layer (LLM模型)" vertex="1">
+          <mxGeometry as="geometry" height="280" width="700" x="1550" y="440"/>
+        </mxCell>
+        <mxCell id="32" parent="31" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d1a3ff;strokeColor=#9673a6;fontStyle=1;fontSize=12;" value="Model Interface
+模型接口" vertex="1">
+          <mxGeometry as="geometry" height="90" width="300" x="1570" y="490"/>
+        </mxCell>
+        <mxCell id="33" parent="31" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d1a3ff;strokeColor=#9673a6;fontStyle=1;fontSize=12;" value="Model Callbacks
+模型回调" vertex="1">
+          <mxGeometry as="geometry" height="90" width="300" x="1890" y="490"/>
+        </mxCell>
+        <mxCell id="34" parent="31" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6d5ff;strokeColor=#9673a6;fontStyle=1;fontSize=12;" value="OpenAI / GPT Models" vertex="1">
+          <mxGeometry as="geometry" height="80" width="400" x="1710" y="600"/>
+        </mxCell>
+        <mxCell id="35" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e6f9ff;swimlaneFillColor=#ffffff;fontSize=14;" value="Graph Layer (图执行引擎)" vertex="1">
+          <mxGeometry as="geometry" height="240" width="700" x="50" y="760"/>
+        </mxCell>
+        <mxCell id="36" parent="35" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#99ccff;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" value="Graph Executor
+图执行器" vertex="1">
+          <mxGeometry as="geometry" height="80" width="300" x="70" y="810"/>
+        </mxCell>
+        <mxCell id="37" parent="35" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#99ccff;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" value="State Mgmt
+状态管理" vertex="1">
+          <mxGeometry as="geometry" height="80" width="170" x="390" y="810"/>
+        </mxCell>
+        <mxCell id="38" parent="35" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#99ccff;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" value="Checkpoint
+检查点" vertex="1">
+          <mxGeometry as="geometry" height="80" width="150" x="580" y="810"/>
+        </mxCell>
+        <mxCell id="39" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff5e6;swimlaneFillColor=#ffffff;fontSize=14;" value="Session &amp; Runner" vertex="1">
+          <mxGeometry as="geometry" height="240" width="700" x="800" y="760"/>
+        </mxCell>
+        <mxCell id="40" parent="39" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=12;" value="Runner
+执行运行器" vertex="1">
+          <mxGeometry as="geometry" height="80" width="300" x="820" y="810"/>
+        </mxCell>
+        <mxCell id="41" parent="39" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=12;" value="Session
+会话管理" vertex="1">
+          <mxGeometry as="geometry" height="80" width="320" x="1140" y="810"/>
+        </mxCell>
+        <mxCell id="42" parent="39" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffeedd;strokeColor=#d79b00;fontStyle=1;fontSize=12;" value="Callbacks &amp; Event System" vertex="1">
+          <mxGeometry as="geometry" height="60" width="500" x="870" y="910"/>
+        </mxCell>
+        <mxCell id="43" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ffffcc;swimlaneFillColor=#ffffff;fontSize=14;" value="Storage Layer (存储后端)" vertex="1">
+          <mxGeometry as="geometry" height="240" width="700" x="1550" y="760"/>
+        </mxCell>
+        <mxCell id="44" parent="43" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffff99;strokeColor=#d6b656;fontStyle=1;fontSize=12;" value="Redis
+Redis存储" vertex="1">
+          <mxGeometry as="geometry" height="80" width="200" x="1570" y="810"/>
+        </mxCell>
+        <mxCell id="45" parent="43" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffff99;strokeColor=#d6b656;fontStyle=1;fontSize=12;" value="Elasticsearch
+全文检索" vertex="1">
+          <mxGeometry as="geometry" height="80" width="220" x="1790" y="810"/>
+        </mxCell>
+        <mxCell id="46" parent="43" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffff99;strokeColor=#d6b656;fontStyle=1;fontSize=12;" value="TCVector
+腾讯向量库" vertex="1">
+          <mxGeometry as="geometry" height="80" width="180" x="2030" y="810"/>
+        </mxCell>
+        <mxCell id="47" parent="43" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffe6;strokeColor=#d6b656;fontStyle=1;fontSize=12;" value="Session Storage 会话存储" vertex="1">
+          <mxGeometry as="geometry" height="60" width="380" x="1710" y="910"/>
+        </mxCell>
+        <mxCell id="48" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f5f5f5;swimlaneFillColor=#ffffff;fontSize=14;" value="Telemetry (监控与追踪)" vertex="1">
+          <mxGeometry as="geometry" height="200" width="2200" x="50" y="1030"/>
+        </mxCell>
+        <mxCell id="49" parent="48" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#999999;fontStyle=1;fontSize=12;" value="Trace
+链路追踪" vertex="1">
+          <mxGeometry as="geometry" height="80" width="350" x="300" y="1080"/>
+        </mxCell>
+        <mxCell id="50" parent="48" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#999999;fontStyle=1;fontSize=12;" value="Metric
+性能指标" vertex="1">
+          <mxGeometry as="geometry" height="80" width="350" x="700" y="1080"/>
+        </mxCell>
+        <mxCell id="51" parent="48" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#999999;fontStyle=1;fontSize=12;" value="Langfuse
+Langfuse集成" vertex="1">
+          <mxGeometry as="geometry" height="80" width="350" x="1100" y="1080"/>
+        </mxCell>
+        <mxCell id="52" parent="48" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#999999;fontStyle=1;fontSize=12;" value="监控所有层级：Agent / Model / Tool / Memory / Knowledge" vertex="1">
+          <mxGeometry as="geometry" height="40" width="1150" x="300" y="1175"/>
+        </mxCell>
+        <mxCell edge="1" id="53" parent="1" source="25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ff9900;strokeWidth=2;" target="4" value="Memory
+Management">
+          <mxGeometry as="geometry" relative="1"/>
+        </mxCell>
+        <mxCell edge="1" id="54" parent="1" source="25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#00cc00;strokeWidth=2;" target="10" value="Knowledge
+Retrieval">
+          <mxGeometry as="geometry" relative="1"/>
+        </mxCell>
+        <mxCell edge="1" id="55" parent="1" source="25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0066ff;strokeWidth=2;" target="32" value="LLM Call">
+          <mxGeometry as="geometry" relative="1"/>
+        </mxCell>
+        <mxCell edge="1" id="56" parent="1" source="25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#9933ff;strokeWidth=2;" target="18" value="Use Tools">
+          <mxGeometry as="geometry" relative="1"/>
+        </mxCell>
+        <mxCell edge="1" id="57" parent="1" source="7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;dashed=1;" target="44" value="Persist">
+          <mxGeometry as="geometry" relative="1"/>
+        </mxCell>
+        <mxCell edge="1" id="58" parent="1" source="16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;dashed=1;" target="46" value="Vector DB">
+          <mxGeometry as="geometry" relative="1"/>
+        </mxCell>
+        <mxCell edge="1" id="59" parent="1" source="36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#0066ff;strokeWidth=2;dashed=1;" target="26" value="Execute">
+          <mxGeometry as="geometry" relative="1"/>
+        </mxCell>
+        <mxCell edge="1" id="60" parent="1" source="40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8b4513;strokeWidth=2;" target="25" value="Run">
+          <mxGeometry as="geometry" relative="1"/>
+        </mxCell>
+        <mxCell edge="1" id="61" parent="1" source="41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#ff9900;strokeWidth=2;dashed=1;" target="4" value="Session
+Memory">
+          <mxGeometry as="geometry" relative="1"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
