@@ -713,6 +713,15 @@ func Test_pgVectorConverter_buildComparisonCondition(t *testing.T) {
 			},
 			wantErr: false,
 		},
+		{
+			name: "empty field - should error",
+			condition: &searchfilter.UniversalFilterCondition{
+				Field:    "",
+				Operator: searchfilter.OperatorEqual,
+				Value:    "test",
+			},
+			wantErr: true,
+		},
 	}
 
 	converter := &pgVectorConverter{}
@@ -744,6 +753,267 @@ func Test_pgVectorConverter_buildComparisonCondition(t *testing.T) {
 
 			if !reflect.DeepEqual(*filter, tc.wantFilter) {
 				t.Errorf("buildComparisonCondition() args = %v, want %v", *filter, tc.wantFilter)
+			}
+		})
+	}
+}
+
+// Test_pgVectorConverter_Convert tests the top-level Convert method
+func Test_pgVectorConverter_Convert(t *testing.T) {
+	tests := []struct {
+		name       string
+		condition  *searchfilter.UniversalFilterCondition
+		wantErr    bool
+		wantFilter *condConvertResult
+	}{
+		{
+			name: "simple_equal_condition",
+			condition: &searchfilter.UniversalFilterCondition{
+				Field:    "name",
+				Operator: searchfilter.OperatorEqual,
+				Value:    "test",
+			},
+			wantErr: false,
+			wantFilter: &condConvertResult{
+				cond: "name = $%d",
+				args: []any{"test"},
+			},
+		},
+		{
+			name:       "nil_condition",
+			condition:  nil,
+			wantErr:    true,
+			wantFilter: nil,
+		},
+		{
+			name: "complex_and_condition",
+			condition: &searchfilter.UniversalFilterCondition{
+				Operator: searchfilter.OperatorAnd,
+				Value: []*searchfilter.UniversalFilterCondition{
+					{
+						Field:    "age",
+						Operator: searchfilter.OperatorGreaterThan,
+						Value:    18,
+					},
+					{
+						Field:    "status",
+						Operator: searchfilter.OperatorEqual,
+						Value:    "active",
+					},
+				},
+			},
+			wantErr: false,
+			wantFilter: &condConvertResult{
+				cond: "(age > $%d) AND (status = $%d)",
+				args: []any{18, "active"},
+			},
+		},
+	}
+
+	c := &pgVectorConverter{}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result, err := c.Convert(tt.condition)
+
+			if tt.wantErr {
+				if err == nil {
+					t.Errorf("Convert() expected error, but got nil")
+				}
+				return
+			}
+
+			if err != nil {
+				t.Errorf("Convert() unexpected error = %v", err)
+				return
+			}
+
+			if tt.wantFilter != nil {
+				if !reflect.DeepEqual(*result, *tt.wantFilter) {
+					t.Errorf("Convert() result = %v, want %v", *result, *tt.wantFilter)
+				}
+			}
+		})
+	}
+}
+
+// Test_pgVectorConverter_buildLikeCondition tests LIKE operator
+func Test_pgVectorConverter_buildLikeCondition(t *testing.T) {
+	tests := []struct {
+		name       string
+		condition  *searchfilter.UniversalFilterCondition
+		wantErr    bool
+		wantFilter *condConvertResult
+	}{
+		{
+			name: "like_with_string",
+			condition: &searchfilter.UniversalFilterCondition{
+				Field:    "name",
+				Operator: searchfilter.OperatorLike,
+				Value:    "%test%",
+			},
+			wantErr: false,
+			wantFilter: &condConvertResult{
+				cond: "name LIKE $%d",
+				args: []any{"%test%"},
+			},
+		},
+		{
+			name: "not_like_with_string",
+			condition: &searchfilter.UniversalFilterCondition{
+				Field:    "name",
+				Operator: searchfilter.OperatorNotLike,
+				Value:    "%test%",
+			},
+			wantErr: false,
+			wantFilter: &condConvertResult{
+				cond: "name NOT LIKE $%d",
+				args: []any{"%test%"},
+			},
+		},
+		{
+			name: "empty_field",
+			condition: &searchfilter.UniversalFilterCondition{
+				Field:    "",
+				Operator: searchfilter.OperatorLike,
+				Value:    "%test%",
+			},
+			wantErr: true,
+		},
+		{
+			name: "nil_value",
+			condition: &searchfilter.UniversalFilterCondition{
+				Field:    "name",
+				Operator: searchfilter.OperatorLike,
+				Value:    nil,
+			},
+			wantErr: true,
+		},
+		{
+			name: "non_string_value",
+			condition: &searchfilter.UniversalFilterCondition{
+				Field:    "name",
+				Operator: searchfilter.OperatorLike,
+				Value:    123,
+			},
+			wantErr: true,
+		},
+	}
+
+	c := &pgVectorConverter{}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result, err := c.buildLikeCondition(tt.condition)
+
+			if tt.wantErr {
+				if err == nil {
+					t.Errorf("buildLikeCondition() expected error, but got nil")
+				}
+				return
+			}
+
+			if err != nil {
+				t.Errorf("buildLikeCondition() unexpected error = %v", err)
+				return
+			}
+
+			if tt.wantFilter != nil && !reflect.DeepEqual(*result, *tt.wantFilter) {
+				t.Errorf("buildLikeCondition() result = %v, want %v", *result, *tt.wantFilter)
+			}
+		})
+	}
+}
+
+// Test_pgVectorConverter_buildBetweenCondition tests BETWEEN operator
+func Test_pgVectorConverter_buildBetweenCondition(t *testing.T) {
+	tests := []struct {
+		name       string
+		condition  *searchfilter.UniversalFilterCondition
+		wantErr    bool
+		wantFilter *condConvertResult
+	}{
+		{
+			name: "between_with_integers",
+			condition: &searchfilter.UniversalFilterCondition{
+				Field:    "age",
+				Operator: searchfilter.OperatorBetween,
+				Value:    []int{18, 65},
+			},
+			wantErr: false,
+			wantFilter: &condConvertResult{
+				cond: "age >= $%d AND age <= $%d",
+				args: []any{18, 65},
+			},
+		},
+		{
+			name: "between_with_floats",
+			condition: &searchfilter.UniversalFilterCondition{
+				Field:    "price",
+				Operator: searchfilter.OperatorBetween,
+				Value:    []float64{10.5, 99.9},
+			},
+			wantErr: false,
+			wantFilter: &condConvertResult{
+				cond: "price >= $%d AND price <= $%d",
+				args: []any{10.5, 99.9},
+			},
+		},
+		{
+			name: "empty_field",
+			condition: &searchfilter.UniversalFilterCondition{
+				Field:    "",
+				Operator: searchfilter.OperatorBetween,
+				Value:    []int{1, 2},
+			},
+			wantErr: true,
+		},
+		{
+			name: "nil_value",
+			condition: &searchfilter.UniversalFilterCondition{
+				Field:    "age",
+				Operator: searchfilter.OperatorBetween,
+				Value:    nil,
+			},
+			wantErr: true,
+		},
+		{
+			name: "single_value",
+			condition: &searchfilter.UniversalFilterCondition{
+				Field:    "age",
+				Operator: searchfilter.OperatorBetween,
+				Value:    []int{18},
+			},
+			wantErr: true,
+		},
+		{
+			name: "more_than_two_values",
+			condition: &searchfilter.UniversalFilterCondition{
+				Field:    "age",
+				Operator: searchfilter.OperatorBetween,
+				Value:    []int{18, 30, 65},
+			},
+			wantErr: true,
+		},
+	}
+
+	c := &pgVectorConverter{}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result, err := c.buildBetweenCondition(tt.condition)
+
+			if tt.wantErr {
+				if err == nil {
+					t.Errorf("buildBetweenCondition() expected error, but got nil")
+				}
+				return
+			}
+
+			if err != nil {
+				t.Errorf("buildBetweenCondition() unexpected error = %v", err)
+				return
+			}
+
+			if tt.wantFilter != nil && !reflect.DeepEqual(*result, *tt.wantFilter) {
+				t.Errorf("buildBetweenCondition() result = %v, want %v", *result, *tt.wantFilter)
 			}
 		})
 	}

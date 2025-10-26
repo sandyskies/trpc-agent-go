@@ -736,6 +736,19 @@ func TestQueryBuilderFilterCondition(t *testing.T) {
 			},
 			expectedContains: []string{"WHERE", "name = $1", "age > $2"},
 		},
+		{
+			name:             "nil_condition",
+			condition:        nil,
+			expectedContains: []string{"WHERE"},
+		},
+		{
+			name: "empty_cond",
+			condition: &condConvertResult{
+				cond: "",
+				args: []any{},
+			},
+			expectedContains: []string{"WHERE"},
+		},
 	}
 
 	for _, tt := range tests {
@@ -771,8 +784,8 @@ func TestQueryBuilderMultipleFilters(t *testing.T) {
 
 	// Add filter condition
 	qb.addFilterCondition(&condConvertResult{
-		cond: "created_at > $5",
-		args: []any{},
+		cond: "created_at > $%d",
+		args: []any{1609459200},
 	})
 
 	sql, args := qb.build(10)
@@ -781,8 +794,38 @@ func TestQueryBuilderMultipleFilters(t *testing.T) {
 	require.Contains(t, sql, "id IN")
 	require.Contains(t, sql, "metadata @>")
 	require.Contains(t, sql, ">= 0.800")
-	require.Contains(t, sql, "created_at > $")
+	require.Contains(t, sql, "created_at >")
 
 	// Verify we have multiple arguments
-	assert.GreaterOrEqual(t, len(args), 4, "Should have at least vector + 2 ids + metadata + limit")
+	assert.GreaterOrEqual(t, len(args), 5, "Should have at least vector + 2 ids + metadata + created_at")
+}
+
+// TestBaseSQLBuilder tests baseSQLBuilder methods
+func TestBaseSQLBuilder(t *testing.T) {
+	t.Run("addIDFilter_empty_slice", func(t *testing.T) {
+		qb := newVectorQueryBuilder(defaultOptions)
+		initialConditions := len(qb.conditions)
+
+		qb.addIDFilter([]string{})
+
+		assert.Equal(t, initialConditions, len(qb.conditions))
+	})
+
+	t.Run("addMetadataFilter_empty_map", func(t *testing.T) {
+		qb := newVectorQueryBuilder(defaultOptions)
+		initialConditions := len(qb.conditions)
+
+		qb.addMetadataFilter(map[string]any{})
+
+		assert.Equal(t, initialConditions, len(qb.conditions))
+	})
+
+	t.Run("addFilterCondition_nil", func(t *testing.T) {
+		qb := newVectorQueryBuilder(defaultOptions)
+		initialConditions := len(qb.conditions)
+
+		qb.addFilterCondition(nil)
+
+		assert.Equal(t, initialConditions, len(qb.conditions))
+	})
 }

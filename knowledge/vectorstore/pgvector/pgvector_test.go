@@ -572,3 +572,35 @@ func TestWithHybridSearchWeights(t *testing.T) {
 		})
 	}
 }
+
+// TestMapToJSON_EdgeCases tests edge cases for mapToJSON
+func TestMapToJSON_EdgeCases(t *testing.T) {
+	tests := []struct {
+		name     string
+		input    map[string]any
+		validate func(*testing.T, string)
+	}{
+		{
+			name:  "map_with_nested_structures",
+			input: map[string]any{"nested": map[string]any{"key": "value"}},
+			validate: func(t *testing.T, result string) {
+				assert.Contains(t, result, "nested")
+				assert.Contains(t, result, "key")
+			},
+		},
+		{
+			name:  "map_with_array",
+			input: map[string]any{"array": []string{"a", "b", "c"}},
+			validate: func(t *testing.T, result string) {
+				assert.Contains(t, result, "array")
+			},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result := mapToJSON(tt.input)
+			tt.validate(t, result)
+		})
+	}
+}
