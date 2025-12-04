@@ -25,9 +25,69 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Data Loading Pipeline Container -->
-        <mxCell id="load-pipeline-container" value="&lt;b&gt;数据加载流程 (Load Pipeline)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;startSize=40;" vertex="1" parent="1">
+        <!-- Search Pipeline Container (放在前面) -->
+        <mxCell id="search-pipeline-container" value="&lt;b&gt;检索查询流程 (Search Pipeline)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;startSize=40;" vertex="1" parent="1">
           <mxGeometry x="100" y="350" width="1400" height="320" as="geometry" />
+        </mxCell>
+
+        <!-- Search Request -->
+        <mxCell id="search-request" value="&lt;b&gt;SearchRequest&lt;/b&gt;&lt;br&gt;&lt;br&gt;Query&lt;br&gt;History&lt;br&gt;Filter&lt;br&gt;MaxResults" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="search-pipeline-container">
+          <mxGeometry x="40" y="70" width="140" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Retriever -->
+        <mxCell id="retriever" value="&lt;b&gt;Retriever&lt;/b&gt;&lt;br&gt;&lt;br&gt;检索器&lt;br&gt;Retrieve()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="search-pipeline-container">
+          <mxGeometry x="230" y="70" width="140" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Query Enhancer -->
+        <mxCell id="query-enhancer" value="&lt;b&gt;Query Enhancer&lt;/b&gt;&lt;br&gt;&lt;br&gt;查询增强&lt;br&gt;上下文理解" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="search-pipeline-container">
+          <mxGeometry x="420" y="70" width="140" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- VectorStore Search -->
+        <mxCell id="vectorstore-search" value="&lt;b&gt;VectorStore&lt;/b&gt;&lt;br&gt;&lt;br&gt;向量检索&lt;br&gt;Search()&lt;br&gt;相似度计算" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="search-pipeline-container">
+          <mxGeometry x="610" y="70" width="140" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Reranker -->
+        <mxCell id="reranker" value="&lt;b&gt;Reranker&lt;/b&gt;&lt;br&gt;&lt;br&gt;重排序&lt;br&gt;优化排序" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="search-pipeline-container">
+          <mxGeometry x="800" y="70" width="140" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Search Result -->
+        <mxCell id="search-result" value="&lt;b&gt;SearchResult&lt;/b&gt;&lt;br&gt;&lt;br&gt;Document&lt;br&gt;Score&lt;br&gt;Text&lt;br&gt;Documents[]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="search-pipeline-container">
+          <mxGeometry x="990" y="70" width="140" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Search Filter -->
+        <mxCell id="search-filter" value="&lt;b&gt;SearchFilter&lt;/b&gt;&lt;br&gt;• DocumentIDs&lt;br&gt;• Metadata&lt;br&gt;• FilterCondition&lt;br&gt;• UniversalFilter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;" vertex="1" parent="search-pipeline-container">
+          <mxGeometry x="1200" y="70" width="160" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows in search pipeline -->
+        <mxCell id="arrow-search1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;" edge="1" parent="search-pipeline-container" source="search-request" target="retriever">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-search2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;" edge="1" parent="search-pipeline-container" source="retriever" target="query-enhancer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-search3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;" edge="1" parent="search-pipeline-container" source="query-enhancer" target="vectorstore-search">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-search4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;" edge="1" parent="search-pipeline-container" source="vectorstore-search" target="reranker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-search5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;" edge="1" parent="search-pipeline-container" source="reranker" target="search-result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-search6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;dashed=1;" edge="1" parent="search-pipeline-container" source="search-request" target="search-filter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Data Loading Pipeline Container (放在后面) -->
+        <mxCell id="load-pipeline-container" value="&lt;b&gt;数据加载流程 (Load Pipeline)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="100" y="720" width="1400" height="320" as="geometry" />
         </mxCell>
 
         <!-- Source -->
@@ -95,68 +155,8 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Search Pipeline Container -->
-        <mxCell id="search-pipeline-container" value="&lt;b&gt;检索查询流程 (Search Pipeline)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;startSize=40;" vertex="1" parent="1">
-          <mxGeometry x="100" y="720" width="1400" height="320" as="geometry" />
-        </mxCell>
-
-        <!-- Search Request -->
-        <mxCell id="search-request" value="&lt;b&gt;SearchRequest&lt;/b&gt;&lt;br&gt;&lt;br&gt;Query&lt;br&gt;History&lt;br&gt;Filter&lt;br&gt;MaxResults" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="search-pipeline-container">
-          <mxGeometry x="40" y="70" width="140" height="120" as="geometry" />
-        </mxCell>
-
-        <!-- Retriever -->
-        <mxCell id="retriever" value="&lt;b&gt;Retriever&lt;/b&gt;&lt;br&gt;&lt;br&gt;检索器&lt;br&gt;Retrieve()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="search-pipeline-container">
-          <mxGeometry x="230" y="70" width="140" height="120" as="geometry" />
-        </mxCell>
-
-        <!-- Query Enhancer -->
-        <mxCell id="query-enhancer" value="&lt;b&gt;Query Enhancer&lt;/b&gt;&lt;br&gt;&lt;br&gt;查询增强&lt;br&gt;上下文理解" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="search-pipeline-container">
-          <mxGeometry x="420" y="70" width="140" height="120" as="geometry" />
-        </mxCell>
-
-        <!-- VectorStore Search -->
-        <mxCell id="vectorstore-search" value="&lt;b&gt;VectorStore&lt;/b&gt;&lt;br&gt;&lt;br&gt;向量检索&lt;br&gt;Search()&lt;br&gt;相似度计算" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="search-pipeline-container">
-          <mxGeometry x="610" y="70" width="140" height="120" as="geometry" />
-        </mxCell>
-
-        <!-- Reranker -->
-        <mxCell id="reranker" value="&lt;b&gt;Reranker&lt;/b&gt;&lt;br&gt;&lt;br&gt;重排序&lt;br&gt;优化排序" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="search-pipeline-container">
-          <mxGeometry x="800" y="70" width="140" height="120" as="geometry" />
-        </mxCell>
-
-        <!-- Search Result -->
-        <mxCell id="search-result" value="&lt;b&gt;SearchResult&lt;/b&gt;&lt;br&gt;&lt;br&gt;Document&lt;br&gt;Score&lt;br&gt;Text&lt;br&gt;Documents[]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="search-pipeline-container">
-          <mxGeometry x="990" y="70" width="140" height="120" as="geometry" />
-        </mxCell>
-
-        <!-- Search Filter -->
-        <mxCell id="search-filter" value="&lt;b&gt;SearchFilter&lt;/b&gt;&lt;br&gt;• DocumentIDs&lt;br&gt;• Metadata&lt;br&gt;• FilterCondition&lt;br&gt;• UniversalFilter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;" vertex="1" parent="search-pipeline-container">
-          <mxGeometry x="1200" y="70" width="160" height="120" as="geometry" />
-        </mxCell>
-
-        <!-- Arrows in search pipeline -->
-        <mxCell id="arrow-search1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;" edge="1" parent="search-pipeline-container" source="search-request" target="retriever">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arrow-search2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;" edge="1" parent="search-pipeline-container" source="retriever" target="query-enhancer">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arrow-search3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;" edge="1" parent="search-pipeline-container" source="query-enhancer" target="vectorstore-search">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arrow-search4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;" edge="1" parent="search-pipeline-container" source="vectorstore-search" target="reranker">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arrow-search5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;" edge="1" parent="search-pipeline-container" source="reranker" target="search-result">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arrow-search6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;dashed=1;" edge="1" parent="search-pipeline-container" source="search-request" target="search-filter">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
         <!-- Connection from BuiltinKnowledge to pipelines -->
-        <mxCell id="arrow-to-load" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#82b366;" edge="1" parent="1" source="builtin-knowledge" target="load-pipeline-container">
+        <mxCell id="arrow-to-search" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#6c8ebf;" edge="1" parent="1" source="builtin-knowledge" target="search-pipeline-container">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="560" y="260" />
@@ -164,11 +164,11 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="load-label" value="Load()" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="search-label" value="Search()" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="470" y="480" width="80" height="30" as="geometry" />
         </mxCell>
 
-        <mxCell id="arrow-to-search" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#6c8ebf;" edge="1" parent="1" source="builtin-knowledge" target="search-pipeline-container">
+        <mxCell id="arrow-to-load" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#82b366;" edge="1" parent="1" source="builtin-knowledge" target="load-pipeline-container">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="1040" y="260" />
@@ -176,7 +176,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="search-label" value="Search()" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
+        <mxCell id="load-label" value="Load()" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1" vertex="1" parent="1">
           <mxGeometry x="1050" y="850" width="80" height="30" as="geometry" />
         </mxCell>
 
@@ -214,23 +214,23 @@
           <mxGeometry x="1620" y="420" width="220" height="220" as="geometry" />
         </mxCell>
 
-        <mxCell id="feature1" value="✓ 增量同步" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="features-container">
+        <mxCell id="feature1" value="✓ 上下文感知搜索" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="features-container">
           <mxGeometry x="20" y="40" width="180" height="25" as="geometry" />
         </mxCell>
 
-        <mxCell id="feature2" value="✓ 并发加载" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="features-container">
+        <mxCell id="feature2" value="✓ 多种Embedder" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="features-container">
           <mxGeometry x="20" y="70" width="180" height="25" as="geometry" />
         </mxCell>
 
-        <mxCell id="feature3" value="✓ 多种Embedder" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="features-container">
+        <mxCell id="feature3" value="✓ 多种VectorStore" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="features-container">
           <mxGeometry x="20" y="100" width="180" height="25" as="geometry" />
         </mxCell>
 
-        <mxCell id="feature4" value="✓ 多种VectorStore" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="features-container">
+        <mxCell id="feature4" value="✓ 增量同步" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="features-container">
           <mxGeometry x="20" y="130" width="180" height="25" as="geometry" />
         </mxCell>
 
-        <mxCell id="feature5" value="✓ 上下文感知搜索" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="features-container">
+        <mxCell id="feature5" value="✓ 并发加载" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="features-container">
           <mxGeometry x="20" y="160" width="180" height="25" as="geometry" />
         </mxCell>
 
@@ -238,4 +238,3 @@
     </mxGraphModel>
   </diagram>
 </mxfile>
-
