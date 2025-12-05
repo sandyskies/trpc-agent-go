@@ -1,180 +1,120 @@
 <mxfile host="65bd71144e">
     <diagram name="Memory Architecture" id="memory-arch">
-        <mxGraphModel dx="556" dy="464" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+        <mxGraphModel dx="491" dy="457" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=none;" parent="1" vertex="1">
                     <mxGeometry width="1600" height="900" as="geometry"/>
                 </mxCell>
-                <mxCell id="overview-title" value="trpc-agent-go Memory 记忆模块" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=32;fontStyle=1;fontColor=#1a237e;" parent="1" vertex="1">
+                <mxCell id="overview-title" value="trpc-agent-go Memory 记忆模块" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=32;fontStyle=1;fontColor=#1976d2;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="400" y="25" width="800" height="45" as="geometry"/>
                 </mxCell>
-                <mxCell id="overview-subtitle" value="为 Agent 提供长期记忆能力  ｜  Session 驱动的多租户隔离  ｜  LLM 智能提取与检索" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=17;fontColor=#546e7a;" parent="1" vertex="1">
+                <mxCell id="overview-subtitle" value="为 Agent 提供长期记忆能力  ｜  Session 驱动的多租户隔离  ｜  LLM 智能提取与检索" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=17;fontColor=#616161;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="300" y="70" width="1000" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="layer1-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#7b1fa2;strokeWidth=3;" parent="1" vertex="1">
+                <mxCell id="layer1-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;strokeWidth=3;" parent="1" vertex="1">
                     <mxGeometry x="60" y="115" width="1480" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="layer1-label" value="① 记忆存储流程 — 如何提取和保存记忆点" style="text;html=1;strokeColor=none;fillColor=#7b1fa2;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=18;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                <mxCell id="layer1-label" value="① 记忆存储流程 — 如何提取和保存记忆点" style="text;html=1;strokeColor=none;fillColor=#1976d2;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=18;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="80" y="125" width="450" height="35" as="geometry"/>
                 </mxCell>
-                <mxCell id="session-badge1" value="Session 提供 AppName+UserID" style="text;html=1;strokeColor=#7b1fa2;fillColor=#f3e5f5;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontColor=#4a148c;fontStyle=1;shadow=1;" parent="1" vertex="1">
+                <mxCell id="session-badge1" value="Session 提供 AppName+UserID" style="text;html=1;strokeColor=#1976d2;fillColor=#e3f2fd;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontColor=#1565c0;fontStyle=1;shadow=1;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="1330" y="125" width="200" height="28" as="geometry"/>
                 </mxCell>
-                <mxCell id="save-user" value="&lt;b style=&quot;font-size:13px&quot;&gt;👤 用户对话&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;用户：我喜欢喝咖啡&lt;br&gt;地点：北京&lt;br&gt;偏好：不吃辣&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7b1fa2;strokeColor=#4a148c;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="80" y="180" width="140" height="115" as="geometry"/>
+                <mxCell id="save-user" value="&lt;b style=&quot;font-size:13px;font-family:PingFang SC&quot;&gt;👤 用户对话&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;font-family:PingFang SC&quot;&gt;我喜欢喝咖啡&lt;br&gt;在北京，不吃辣&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1976d2;strokeColor=#0d47a1;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="180" width="160" height="115" as="geometry"/>
                 </mxCell>
-                <mxCell id="save-step1" value="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#7b1fa2;strokeColor=#4a148c;fontSize=18;fontStyle=1;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="75" y="162" width="35" height="35" as="geometry"/>
+                <mxCell id="save-llm" value="&lt;b style=&quot;font-size:13px;font-family:PingFang SC&quot;&gt;🧠 LLM 提取&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;font-family:PingFang SC&quot;&gt;分析对话&lt;br&gt;提取关键信息&lt;br&gt;生成 Topics&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#42a5f5;strokeColor=#1565c0;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="180" width="160" height="115" as="geometry"/>
                 </mxCell>
-                <mxCell id="save-agent" value="&lt;b style=&quot;font-size:13px&quot;&gt;🤖 Agent 分析&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;识别关键信息&lt;br&gt;需要记住什么？&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9c27b0;strokeColor=#4a148c;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="260" y="180" width="140" height="115" as="geometry"/>
+                <mxCell id="save-tool" value="&lt;b style=&quot;font-size:13px;font-family:PingFang SC&quot;&gt;🛠️ Memory Tool&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;font-family:PingFang SC&quot;&gt;调用 memory_add&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64b5f6;strokeColor=#1976d2;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="180" width="160" height="115" as="geometry"/>
                 </mxCell>
-                <mxCell id="save-step2" value="2" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#7b1fa2;strokeColor=#4a148c;fontSize=18;fontStyle=1;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="255" y="162" width="35" height="35" as="geometry"/>
+                <mxCell id="save-db" value="&lt;b style=&quot;font-size:13px;font-family:PingFang SC&quot;&gt;💾 存储后端&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;font-family:PingFang SC&quot;&gt;InMemory / Redis&lt;br&gt;MySQL / PostgreSQL&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#42a5f5;fontSize=12;align=center;fontColor=#0d47a1;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="780" y="180" width="160" height="115" as="geometry"/>
                 </mxCell>
-                <mxCell id="save-llm" value="&lt;b style=&quot;font-size:13px&quot;&gt;🧠 LLM 提取&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;分析对话内容&lt;br&gt;提取结构化信息&lt;br&gt;生成 Topics 标签&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ab47bc;strokeColor=#4a148c;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="440" y="180" width="150" height="115" as="geometry"/>
-                </mxCell>
-                <mxCell id="save-step3" value="3" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#7b1fa2;strokeColor=#4a148c;fontSize=18;fontStyle=1;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="435" y="162" width="35" height="35" as="geometry"/>
-                </mxCell>
-                <mxCell id="save-tool" value="&lt;b style=&quot;font-size:13px&quot;&gt;🛠️ Memory Tool&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;memory_add&lt;br&gt;调用 AddMemory&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ba68c8;strokeColor=#4a148c;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="630" y="180" width="140" height="115" as="geometry"/>
-                </mxCell>
-                <mxCell id="save-step4" value="4" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#7b1fa2;strokeColor=#4a148c;fontSize=18;fontStyle=1;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="625" y="162" width="35" height="35" as="geometry"/>
-                </mxCell>
-                <mxCell id="save-service" value="&lt;b style=&quot;font-size:13px&quot;&gt;💾 Memory Service&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;验证 Session&lt;br&gt;构建 Entry&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#7b1fa2;fontSize=12;align=center;fontColor=#4a148c;shadow=1;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="810" y="180" width="140" height="115" as="geometry"/>
-                </mxCell>
-                <mxCell id="save-step5" value="5" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#7b1fa2;strokeColor=#4a148c;fontSize=18;fontStyle=1;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="805" y="162" width="35" height="35" as="geometry"/>
-                </mxCell>
-                <mxCell id="save-db" value="&lt;b style=&quot;font-size:13px&quot;&gt;💾 Database&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;持久化存储&lt;br&gt;AppName+UserID 隔离&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1bee7;strokeColor=#7b1fa2;fontSize=12;align=center;fontColor=#4a148c;shadow=1;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="990" y="180" width="140" height="115" as="geometry"/>
-                </mxCell>
-                <mxCell id="save-step6" value="6" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#7b1fa2;strokeColor=#4a148c;fontSize=18;fontStyle=1;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="985" y="162" width="35" height="35" as="geometry"/>
-                </mxCell>
-                <mxCell id="save-arr1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=4;strokeColor=#4a148c;" parent="1" source="save-user" target="save-agent" edge="1">
+                <mxCell id="save-arr1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=4;strokeColor=#1565c0;" parent="1" source="save-user" target="save-llm" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="save-arr2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=4;strokeColor=#4a148c;" parent="1" source="save-agent" target="save-llm" edge="1">
+                <mxCell id="save-arr2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=4;strokeColor=#1565c0;" parent="1" source="save-llm" target="save-tool" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="save-arr3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=4;strokeColor=#4a148c;" parent="1" source="save-llm" target="save-tool" edge="1">
+                <mxCell id="save-arr3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=4;strokeColor=#1565c0;" parent="1" source="save-tool" target="save-db" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="save-arr4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=4;strokeColor=#4a148c;" parent="1" source="save-tool" target="save-service" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="memory-example" value="&lt;b style=&quot;font-size:13px;font-family:PingFang SC&quot;&gt;📦 记忆示例&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;font-family:PingFang SC&quot;&gt;memory: &quot;用户喜欢咖啡&quot;&lt;br&gt;topics: [&quot;饮品&quot;, &quot;咖啡&quot;]&lt;br&gt;&lt;br&gt;memory: &quot;用户在北京不吃辣&quot;&lt;br&gt;topics: [&quot;位置&quot;, &quot;饮食&quot;]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1976d2;fontSize=11;align=left;fontColor=#1565c0;spacingLeft=10;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="1000" y="180" width="530" height="115" as="geometry"/>
                 </mxCell>
-                <mxCell id="save-arr5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=4;strokeColor=#4a148c;" parent="1" source="save-service" target="save-db" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="memory-example" value="&lt;b style=&quot;font-size:13px&quot;&gt;📦 记忆示例&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;memory: &quot;用户喜欢喝咖啡&quot;&lt;br&gt;topics: [&quot;饮品偏好&quot;, &quot;咖啡&quot;]&lt;br&gt;memory: &quot;用户在北京&quot;&lt;br&gt;topics: [&quot;位置&quot;, &quot;北京&quot;]&lt;br&gt;memory: &quot;用户不吃辣&quot;&lt;br&gt;topics: [&quot;饮食偏好&quot;, &quot;口味&quot;]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;fontSize=11;align=left;fontColor=#4a148c;spacingLeft=10;shadow=1;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="1170" y="180" width="360" height="115" as="geometry"/>
-                </mxCell>
-                <mxCell id="data-flow-arrow" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=4;strokeColor=#78909c;dashed=1;dashPattern=8 8;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="save-db" target="query-service" edge="1">
+                <mxCell id="data-flow-arrow" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=5;strokeColor=#757575;dashed=1;dashPattern=12 6;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="save-db" target="query-service" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="1060" y="315" as="sourcePoint"/>
-                        <mxPoint x="515" y="400" as="targetPoint"/>
+                        <mxPoint x="860" y="315" as="sourcePoint"/>
+                        <mxPoint x="420" y="400" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="1060" y="330"/>
-                            <mxPoint x="515" y="330"/>
+                            <mxPoint x="860" y="330"/>
+                            <mxPoint x="420" y="330"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="data-flow-label" value="记忆持久化 → 后续检索使用" style="text;html=1;strokeColor=#78909c;fillColor=#eceff1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontColor=#37474f;fontStyle=1;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="620" y="318" width="220" height="30" as="geometry"/>
+                <mxCell id="data-flow-label" value="💾 持久化 → 🔍 检索" style="text;html=1;strokeColor=#757575;fillColor=#e0e0e0;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=15;fontColor=#424242;fontStyle=1;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="315" width="200" height="35" as="geometry"/>
                 </mxCell>
-                <mxCell id="layer2-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;strokeWidth=3;" parent="1" vertex="1">
+                <mxCell id="layer2-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#66bb6a;strokeWidth=3;" parent="1" vertex="1">
                     <mxGeometry x="60" y="365" width="1480" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="layer2-label" value="② 记忆检索流程 — 如何与 LLM 交互使用记忆" style="text;html=1;strokeColor=none;fillColor=#1565c0;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=18;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+                <mxCell id="layer2-label" value="② 记忆检索流程 — 如何与 LLM 交互使用记忆" style="text;html=1;strokeColor=none;fillColor=#66bb6a;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=18;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="80" y="375" width="500" height="35" as="geometry"/>
                 </mxCell>
-                <mxCell id="session-badge2" value="Session 提供相同 AppName+UserID" style="text;html=1;strokeColor=#1565c0;fillColor=#e3f2fd;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontColor=#0d47a1;fontStyle=1;shadow=1;" parent="1" vertex="1">
+                <mxCell id="session-badge2" value="Session 提供相同 AppName+UserID" style="text;html=1;strokeColor=#66bb6a;fillColor=#e8f5e9;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontColor=#2e7d32;fontStyle=1;shadow=1;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="1300" y="375" width="240" height="28" as="geometry"/>
                 </mxCell>
-                <mxCell id="query-user" value="&lt;b style=&quot;font-size:13px&quot;&gt;👤 用户查询&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;用户：推荐一家&lt;br&gt;附近的餐厅&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565c0;strokeColor=#0d47a1;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="80" y="430" width="140" height="115" as="geometry"/>
+                <mxCell id="query-user" value="&lt;b style=&quot;font-size:13px;font-family:PingFang SC&quot;&gt;👤 用户查询&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;font-family:PingFang SC&quot;&gt;推荐附近餐厅&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#43a047;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="430" width="160" height="115" as="geometry"/>
                 </mxCell>
-                <mxCell id="query-step1" value="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1565c0;strokeColor=#0d47a1;fontSize=18;fontStyle=1;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="75" y="412" width="35" height="35" as="geometry"/>
+                <mxCell id="query-service" value="&lt;b style=&quot;font-size:13px;font-family:PingFang SC&quot;&gt;🔍 智能检索&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;font-family:PingFang SC&quot;&gt;SearchMemories&lt;br&gt;匹配相关记忆&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#66bb6a;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="430" width="160" height="115" as="geometry"/>
                 </mxCell>
-                <mxCell id="query-agent" value="&lt;b style=&quot;font-size:13px&quot;&gt;🤖 Agent 检索&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;调用 SearchMemories&lt;br&gt;查询相关记忆&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1976d2;strokeColor=#0d47a1;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="260" y="430" width="140" height="115" as="geometry"/>
+                <mxCell id="query-context" value="&lt;b style=&quot;font-size:13px;font-family:PingFang SC&quot;&gt;📝 构建上下文&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;font-family:PingFang SC&quot;&gt;查询 + 记忆&lt;br&gt;→ Prompt&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#81c784;fontSize=12;align=center;fontColor=#2e7d32;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="430" width="160" height="115" as="geometry"/>
                 </mxCell>
-                <mxCell id="query-step2" value="2" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1565c0;strokeColor=#0d47a1;fontSize=18;fontStyle=1;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="255" y="412" width="35" height="35" as="geometry"/>
+                <mxCell id="query-llm" value="&lt;b style=&quot;font-size:13px;font-family:PingFang SC&quot;&gt;🧠 LLM 生成&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;font-family:PingFang SC&quot;&gt;生成个性化回复&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#a5d6a7;fontSize=12;align=center;fontColor=#2e7d32;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="780" y="430" width="160" height="115" as="geometry"/>
                 </mxCell>
-                <mxCell id="query-service" value="&lt;b style=&quot;font-size:13px&quot;&gt;💾 Memory Service&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;从 Database 检索&lt;br&gt;匹配相关记忆&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#42a5f5;strokeColor=#1565c0;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="440" y="430" width="150" height="115" as="geometry"/>
-                </mxCell>
-                <mxCell id="query-step3" value="3" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1565c0;strokeColor=#0d47a1;fontSize=18;fontStyle=1;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="435" y="412" width="35" height="35" as="geometry"/>
-                </mxCell>
-                <mxCell id="query-return" value="&lt;b style=&quot;font-size:13px&quot;&gt;📋 返回记忆&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;位置：北京&lt;br&gt;饮食：不吃辣&lt;br&gt;饮品：喜欢咖啡&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64b5f6;strokeColor=#1565c0;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="630" y="430" width="140" height="115" as="geometry"/>
-                </mxCell>
-                <mxCell id="query-step4" value="4" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1565c0;strokeColor=#0d47a1;fontSize=18;fontStyle=1;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="625" y="412" width="35" height="35" as="geometry"/>
-                </mxCell>
-                <mxCell id="query-context" value="&lt;b style=&quot;font-size:13px&quot;&gt;📝 构建上下文&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;用户查询 +&lt;br&gt;相关记忆 →&lt;br&gt;完整 Prompt&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#1565c0;fontSize=12;align=center;fontColor=#0d47a1;shadow=1;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="810" y="430" width="140" height="115" as="geometry"/>
-                </mxCell>
-                <mxCell id="query-step5" value="5" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1565c0;strokeColor=#0d47a1;fontSize=18;fontStyle=1;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="805" y="412" width="35" height="35" as="geometry"/>
-                </mxCell>
-                <mxCell id="query-llm" value="&lt;b style=&quot;font-size:13px&quot;&gt;🧠 LLM 生成&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;基于记忆上下文&lt;br&gt;生成个性化回复&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1565c0;fontSize=12;align=center;fontColor=#0d47a1;shadow=1;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="990" y="430" width="140" height="115" as="geometry"/>
-                </mxCell>
-                <mxCell id="query-step6" value="6" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#1565c0;strokeColor=#0d47a1;fontSize=18;fontStyle=1;fontColor=#ffffff;strokeWidth=3;shadow=1;" parent="1" vertex="1">
-                    <mxGeometry x="985" y="412" width="35" height="35" as="geometry"/>
-                </mxCell>
-                <mxCell id="query-arr1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=4;strokeColor=#0d47a1;" parent="1" source="query-user" target="query-agent" edge="1">
+                <mxCell id="query-arr1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=4;strokeColor=#43a047;" parent="1" source="query-user" target="query-service" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="query-arr2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=4;strokeColor=#0d47a1;" parent="1" source="query-agent" target="query-service" edge="1">
+                <mxCell id="query-arr2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=4;strokeColor=#43a047;" parent="1" source="query-service" target="query-context" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="query-arr3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=4;strokeColor=#0d47a1;" parent="1" source="query-service" target="query-return" edge="1">
+                <mxCell id="query-arr3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=4;strokeColor=#43a047;" parent="1" source="query-context" target="query-llm" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="query-arr4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=4;strokeColor=#0d47a1;" parent="1" source="query-return" target="query-context" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="llm-response" value="&lt;b style=&quot;font-size:13px;font-family:PingFang SC&quot;&gt;💬 回复示例&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;font-family:PingFang SC&quot;&gt;推荐北京的「XX餐厅」&lt;br&gt;口味清淡不辣&lt;br&gt;有很好的咖啡&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#66bb6a;fontSize=11;align=left;fontColor=#2e7d32;spacingLeft=10;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="1000" y="430" width="530" height="115" as="geometry"/>
                 </mxCell>
-                <mxCell id="query-arr5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=4;strokeColor=#0d47a1;" parent="1" source="query-context" target="query-llm" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
+                <mxCell id="layer3-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#757575;strokeWidth=3;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="585" width="1480" height="180" as="geometry"/>
                 </mxCell>
-                <mxCell id="llm-response" value="&lt;b style=&quot;font-size:13px&quot;&gt;💬 LLM 回复示例&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;根据您的偏好，推荐北京&lt;br&gt;的「某某餐厅」，这家餐厅&lt;br&gt;口味清淡不辣，而且有很&lt;br&gt;好的咖啡供应。距离您&lt;br&gt;当前位置很近。&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#1565c0;fontSize=11;align=left;fontColor=#0d47a1;spacingLeft=10;shadow=1;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="1170" y="430" width="360" height="115" as="geometry"/>
+                <mxCell id="layer3-label" value="③ 核心设计" style="text;html=1;strokeColor=none;fillColor=#757575;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=18;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="595" width="150" height="35" as="geometry"/>
                 </mxCell>
-                <mxCell id="layer3-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;strokeWidth=3;" parent="1" vertex="1">
-                    <mxGeometry x="60" y="585" width="1480" height="230" as="geometry"/>
+                <mxCell id="design-session" value="&lt;b style=&quot;font-size:14px;font-family:PingFang SC&quot;&gt;🎯 Session 隔离&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 11px;font-family:PingFang SC&quot;&gt;AppName + UserID&lt;br&gt;• 多租户隔离&lt;br&gt;• 关联用户记忆&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1976d2;strokeColor=#0d47a1;fontSize=12;align=left;fontColor=#ffffff;shadow=1;strokeWidth=2;spacingLeft=12;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="650" width="200" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="layer3-label" value="③ 核心设计与关键组件" style="text;html=1;strokeColor=none;fillColor=#2e7d32;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=18;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="80" y="595" width="300" height="35" as="geometry"/>
+                <mxCell id="design-entry" value="&lt;b style=&quot;font-size:14px;font-family:PingFang SC&quot;&gt;📦 Entry 结构&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 11px;font-family:PingFang SC&quot;&gt;memory + topics&lt;br&gt;app_name + user_id&lt;br&gt;时间戳&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#42a5f5;strokeColor=#1976d2;fontSize=12;align=left;fontColor=#ffffff;shadow=1;strokeWidth=2;spacingLeft=12;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="650" width="200" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="design-session" value="&lt;b style=&quot;font-size:16px&quot;&gt;🎯 Session Context&lt;/b&gt;&lt;hr style=&quot;margin:5px 0&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;提供身份标识&lt;br&gt;AppName + UserID + SessionID&lt;br&gt;&lt;br&gt;作用：&lt;br&gt;• 自动多租户隔离&lt;br&gt;• 关联用户记忆&lt;br&gt;• 跨对话持久化&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#7b1fa2;strokeColor=#4a148c;fontSize=12;align=left;fontColor=#ffffff;shadow=1;strokeWidth=3;spacingLeft=15;" parent="1" vertex="1">
-                    <mxGeometry x="80" y="650" width="220" height="145" as="geometry"/>
+                <mxCell id="design-tools" value="&lt;b style=&quot;font-size:14px;font-family:PingFang SC&quot;&gt;🛠️ Memory 工具&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 11px;font-family:PingFang SC&quot;&gt;6个工具（可配置）&lt;br&gt;add / update / delete&lt;br&gt;search / load / clear&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66bb6a;strokeColor=#43a047;fontSize=12;align=left;fontColor=#ffffff;shadow=1;strokeWidth=2;spacingLeft=12;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="650" width="200" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="design-entry" value="&lt;b style=&quot;font-size:16px&quot;&gt;📦 Entry 结构&lt;/b&gt;&lt;hr style=&quot;margin:5px 0&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;记忆条目&lt;br&gt;&lt;br&gt;字段：&lt;br&gt;• id: 唯一标识&lt;br&gt;• memory: 记忆内容&lt;br&gt;• topics: 主题标签&lt;br&gt;• app_name + user_id: 隔离&lt;br&gt;• created_at / updated_at&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1565c0;strokeColor=#0d47a1;fontSize=12;align=left;fontColor=#ffffff;shadow=1;strokeWidth=3;spacingLeft=15;" parent="1" vertex="1">
-                    <mxGeometry x="340" y="650" width="220" height="145" as="geometry"/>
+                <mxCell id="design-llm" value="&lt;b style=&quot;font-size:14px;font-family:PingFang SC&quot;&gt;🧠 LLM 集成&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 11px;font-family:PingFang SC&quot;&gt;存储：提取信息&lt;br&gt;检索：上下文回复&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81c784;strokeColor=#66bb6a;fontSize=12;align=left;fontColor=#ffffff;shadow=1;strokeWidth=2;spacingLeft=12;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="840" y="650" width="200" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="design-tools" value="&lt;b style=&quot;font-size:16px&quot;&gt;🛠️ Memory Tools&lt;/b&gt;&lt;hr style=&quot;margin:5px 0&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Agent 工具集&lt;br&gt;&lt;br&gt;工具：&lt;br&gt;• memory_add: 添加&lt;br&gt;• memory_update: 更新&lt;br&gt;• memory_delete: 删除&lt;br&gt;• memory_search: 搜索&lt;br&gt;• memory_load: 加载&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ff9800;strokeColor=#e65100;fontSize=12;align=left;fontColor=#ffffff;shadow=1;strokeWidth=3;spacingLeft=15;" parent="1" vertex="1">
-                    <mxGeometry x="600" y="650" width="220" height="145" as="geometry"/>
+                <mxCell id="design-principles" value="&lt;b style=&quot;font-size:14px;font-family:PingFang SC&quot;&gt;✨ 核心特性&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 11px;font-family:PingFang SC&quot;&gt;🔐 多租户隔离  🏷️ Topics 分类&lt;br&gt;🧠 LLM 智能提取  💾 多存储后端&lt;br&gt;⚙️ 工具可配置  🎨 自定义工具&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#757575;strokeColor=#424242;fontSize=12;align=left;fontColor=#ffffff;shadow=1;strokeWidth=2;spacingLeft=12;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="1080" y="650" width="450" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="design-llm" value="&lt;b style=&quot;font-size:16px&quot;&gt;🧠 LLM 交互&lt;/b&gt;&lt;hr style=&quot;margin:5px 0&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;大模型角色&lt;br&gt;&lt;br&gt;存储阶段：&lt;br&gt;• 分析对话内容&lt;br&gt;• 提取关键信息点&lt;br&gt;• 生成结构化记忆&lt;br&gt;&lt;br&gt;检索阶段：&lt;br&gt;• 接收记忆上下文&lt;br&gt;• 生成个性化回复&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2e7d32;strokeColor=#1b5e20;fontSize=12;align=left;fontColor=#ffffff;shadow=1;strokeWidth=3;spacingLeft=15;" parent="1" vertex="1">
-                    <mxGeometry x="860" y="650" width="220" height="145" as="geometry"/>
-                </mxCell>
-                <mxCell id="design-principles" value="&lt;b style=&quot;font-size:16px&quot;&gt;✨ 核心原则&lt;/b&gt;&lt;hr style=&quot;margin:5px 0&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;br&gt;🔐 Session 多租户隔离&lt;br&gt;🏷️ Topics 主题分类&lt;br&gt;⏱️ 时间追踪管理&lt;br&gt;🔍 智能检索匹配&lt;br&gt;🧠 LLM 深度集成&lt;br&gt;♻️ 完整 CRUD 支持&lt;br&gt;🎯 上下文感知&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00897b;strokeColor=#004d40;fontSize=12;align=left;fontColor=#ffffff;shadow=1;strokeWidth=3;spacingLeft=15;" parent="1" vertex="1">
-                    <mxGeometry x="1120" y="650" width="410" height="145" as="geometry"/>
-                </mxCell>
-                <mxCell id="summary-box" value="&lt;b style=&quot;font-size:20px&quot;&gt;💡 核心价值&lt;/b&gt;：通过 Session 实现安全隔离  |  LLM 智能提取与检索  |  完整的 CRUD 操作  |  支持主题分类与时间追踪  |  为 Agent 提供持久化长期记忆能力" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#9e9e9e;fontSize=15;align=center;fontColor=#424242;shadow=1;strokeWidth=3;" parent="1" vertex="1">
-                    <mxGeometry x="60" y="835" width="1480" height="50" as="geometry"/>
+                <mxCell id="summary-box" value="&lt;b style=&quot;font-size:18px;font-family:PingFang SC&quot;&gt;💡 核心价值&lt;/b&gt;：Session 安全隔离  |  LLM 智能提取检索  |  多存储后端支持  |  灵活工具配置" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#9e9e9e;fontSize=14;align=center;fontColor=#424242;shadow=1;strokeWidth=3;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="785" width="1480" height="50" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
