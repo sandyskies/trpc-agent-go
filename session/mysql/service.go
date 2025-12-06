@@ -29,18 +29,6 @@ import (
 
 var _ session.Service = (*Service)(nil)
 
-const (
-	defaultSessionEventLimit     = 1000
-	defaultChanBufferSize        = 100
-	defaultAsyncPersisterNum     = 10
-	defaultCleanupIntervalSecond = 5 * time.Minute // 5 min
-
-	defaultAsyncPersistTimeout = 10 * time.Second
-
-	defaultAsyncSummaryNum  = 3
-	defaultSummaryQueueSize = 100
-)
-
 // SessionState is the state of a session.
 type SessionState struct {
 	ID        string           `json:"id"`
@@ -89,45 +77,27 @@ type summaryJob struct {
 // It requires either a DSN (WithMySQLClientDSN) or an instance name (WithMySQLInstance).
 func NewService(options ...ServiceOpt) (*Service, error) {
 	// Apply default options
-	opts := ServiceOpts{
-		sessionEventLimit: defaultSessionEventLimit,
-		asyncPersisterNum: defaultAsyncPersisterNum,
-		asyncSummaryNum:   defaultAsyncSummaryNum,
-		summaryQueueSize:  defaultSummaryQueueSize,
-		softDelete:        true, // default: enable soft delete
-	}
-
+	opts := defaultOptions
 	for _, option := range options {
 		option(&opts)
 	}
 
 	// Create MySQL client
-	builder := storage.GetClientBuilder()
-	var mysqlClient storage.Client
-	var err error
-
-	// Priority: dsn > instanceName
-	if opts.dsn != "" {
-		// Method 1: Use DSN directly (recommended)
-		mysqlClient, err = builder(
-			storage.WithClientBuilderDSN(opts.dsn),
-			storage.WithExtraOptions(opts.extraOptions...),
-		)
-		if err != nil {
-			return nil, fmt.Errorf("create mysql client from dsn failed: %w", err)
-		}
-	} else if opts.instanceName != "" {
+	builderOpts := []storage.ClientBuilderOpt{
+		storage.WithClientBuilderDSN(opts.dsn),
+		storage.WithExtraOptions(opts.extraOptions...),
+	}
+	if opts.dsn == "" && opts.instanceName != "" {
 		// Method 2: Use pre-registered MySQL instance
-		builderOpts, ok := storage.GetMySQLInstance(opts.instanceName)
-		if !ok {
+		var ok bool
+		if builderOpts, ok = storage.GetMySQLInstance(opts.instanceName); !ok {
 			return nil, fmt.Errorf("mysql instance %s not found", opts.instanceName)
 		}
-		mysqlClient, err = builder(builderOpts...)
-		if err != nil {
-			return nil, fmt.Errorf("create mysql client from instance name failed: %w", err)
-		}
-	} else {
-		return nil, fmt.Errorf("either dsn or instance name must be provided")
+	}
+
+	mysqlClient, err := storage.GetClientBuilder()(builderOpts...)
+	if err != nil {
+		return nil, fmt.Errorf("create mysql client failed: %w", err)
 	}
 
 	// Build table names with prefix
@@ -727,6 +697,36 @@ func (s *Service) cleanupExpiredData(ctx context.Context) {
 // cleanupExpiredSessions cleans up expired session states, events, and summaries.
 func (s *Service) cleanupExpiredSessions(ctx context.Context, now time.Time) {
 	var deletedCount int64
+	var sessionKeys []session.Key
+	query := fmt.Sprintf(`SELECT app_name, user_id, session_id, MAX(updated_at) as updated_at FROM %s
+				WHERE deleted_at IS NULL GROUP BY app_name, user_id, session_id`,
+		s.tableSessionEvents)
+	err := s.mysqlClient.Query(ctx, func(rows *sql.Rows) error {
+		// rows.Next() is already called by the Query loop
+		var appName, userID, sessionID string
+		var updatedAt time.Time
+		if err := rows.Scan(&appName, &userID, &sessionID, &updatedAt); err != nil {
+			return err
+		}
+		if updatedAt.Before(now.Add(-s.sessionTTL)) {
+			sessionKeys = append(sessionKeys, session.Key{
+				AppName:   appName,
+				UserID:    userID,
+				SessionID: sessionID,
+			})
+		}
+		return nil
+	}, query)
+	if err != nil {
+		log.Warnf("fetch events failed: %w", err)
+		return
+	}
+	placeholders := make([]string, len(sessionKeys))
+	args := make([]any, 0, len(sessionKeys))
+	for i, key := range sessionKeys {
+		placeholders[i] = "(?, ?, ?)"
+		args = append(args, key.AppName, key.UserID, key.SessionID)
+	}
 
 	if s.opts.softDelete {
 		// Use transaction to ensure atomicity
@@ -743,17 +743,19 @@ func (s *Service) cleanupExpiredSessions(ctx context.Context, now time.Time) {
 			// Soft delete related events and summaries with same expiration condition
 			if _, err := tx.ExecContext(ctx,
 				fmt.Sprintf(`UPDATE %s SET deleted_at = ? WHERE expires_at IS NOT NULL AND expires_at <= ? AND deleted_at IS NULL`,
-					s.tableSessionEvents),
-				now, now); err != nil {
-				return fmt.Errorf("soft delete events: %w", err)
-			}
-
-			if _, err := tx.ExecContext(ctx,
-				fmt.Sprintf(`UPDATE %s SET deleted_at = ? WHERE expires_at IS NOT NULL AND expires_at <= ? AND deleted_at IS NULL`,
 					s.tableSessionSummaries),
 				now, now); err != nil {
 				return fmt.Errorf("soft delete summaries: %w", err)
 			}
+
+			if len(args) > 0 {
+				if _, err := tx.ExecContext(ctx,
+					fmt.Sprintf(`UPDATE %s SET deleted_at = ? WHERE (app_name, user_id, session_id) IN (%s) AND deleted_at IS NULL`,
+						s.tableSessionEvents, strings.Join(placeholders, ",")), append([]any{now}, args...)...); err != nil {
+					return fmt.Errorf("soft delete events: %w", err)
+				}
+			}
+
 			return nil
 		})
 		if err != nil {
@@ -775,16 +777,16 @@ func (s *Service) cleanupExpiredSessions(ctx context.Context, now time.Time) {
 			// Hard delete events and summaries with same expiration condition
 			if _, err := tx.ExecContext(ctx,
 				fmt.Sprintf(`DELETE FROM %s WHERE expires_at IS NOT NULL AND expires_at <= ?`,
-					s.tableSessionEvents),
-				now); err != nil {
-				return fmt.Errorf("hard delete events: %w", err)
-			}
-
-			if _, err := tx.ExecContext(ctx,
-				fmt.Sprintf(`DELETE FROM %s WHERE expires_at IS NOT NULL AND expires_at <= ?`,
 					s.tableSessionSummaries),
 				now); err != nil {
 				return fmt.Errorf("hard delete summaries: %w", err)
+			}
+			if len(args) > 0 {
+				if _, err := tx.ExecContext(ctx,
+					fmt.Sprintf(`DELETE FROM %s WHERE (app_name, user_id, session_id) IN (%s) AND deleted_at IS NULL`,
+						s.tableSessionEvents, strings.Join(placeholders, ",")), args...); err != nil {
+					return fmt.Errorf("soft delete summaries: %w", err)
+				}
 			}
 			return nil
 		})

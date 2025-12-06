@@ -69,20 +69,28 @@ func (c *defaultA2AMessageToAgentMessage) ConvertToAgentMessage(
 	for _, part := range message.Parts {
 		switch part.GetKind() {
 		case protocol.KindText:
-			p, ok := part.(*protocol.TextPart)
-			if !ok {
+			var textPart *protocol.TextPart
+			if p, ok := part.(*protocol.TextPart); ok {
+				textPart = p
+			} else if p, ok := part.(protocol.TextPart); ok {
+				textPart = &p
+			} else {
 				continue
 			}
 			// Only add to content string, not to contentParts
 			// to avoid duplication when converting back to A2A message
-			content += p.Text
+			content += textPart.Text
 		case protocol.KindFile:
-			f, ok := part.(*protocol.FilePart)
-			if !ok {
+			var filePart *protocol.FilePart
+			if f, ok := part.(*protocol.FilePart); ok {
+				filePart = f
+			} else if f, ok := part.(protocol.FilePart); ok {
+				filePart = &f
+			} else {
 				continue
 			}
 			// Convert FilePart to model.ContentPart
-			switch fileData := f.File.(type) {
+			switch fileData := filePart.File.(type) {
 			case *protocol.FileWithBytes:
 				// Handle file with bytes data
 				fileName := ""
@@ -121,11 +129,15 @@ func (c *defaultA2AMessageToAgentMessage) ConvertToAgentMessage(
 				})
 			}
 		case protocol.KindData:
-			d, ok := part.(*protocol.DataPart)
-			if !ok {
+			var dataPart *protocol.DataPart
+			if d, ok := part.(*protocol.DataPart); ok {
+				dataPart = d
+			} else if d, ok := part.(protocol.DataPart); ok {
+				dataPart = &d
+			} else {
 				continue
 			}
-			dataStr := fmt.Sprintf("%s", d.Data)
+			dataStr := fmt.Sprintf("%s", dataPart.Data)
 			contentParts = append(contentParts, model.ContentPart{
 				Type: model.ContentTypeText,
 				Text: &dataStr,
@@ -144,7 +156,9 @@ func (c *defaultA2AMessageToAgentMessage) ConvertToAgentMessage(
 }
 
 // defaultEventToA2AMessage is the default implementation of EventToA2AMessageConverter.
-type defaultEventToA2AMessage struct{}
+type defaultEventToA2AMessage struct {
+	adkCompatibility bool // Enable ADK-compatible metadata keys (e.g., "adk_type" instead of "type")
+}
 
 // ConvertToA2AMessage converts an Agent event to an A2A protocol message.
 // For non-streaming responses, it returns the full content including tool calls.
@@ -302,8 +316,15 @@ func (c *defaultEventToA2AMessage) convertToolCallToA2AMessage(
 
 			// Create DataPart with metadata indicating this is a function call
 			dataPart := protocol.NewDataPart(toolCallData)
+
+			// Use ADK-compatible metadata key if enabled
+			metadataTypeKey := ia2a.DataPartMetadataTypeKey
+			if c.adkCompatibility {
+				metadataTypeKey = ia2a.GetADKMetadataKey(ia2a.DataPartMetadataTypeKey)
+			}
+
 			dataPart.Metadata = map[string]any{
-				ia2a.DataPartMetadataTypeKey: ia2a.DataPartMetadataTypeFunctionCall,
+				metadataTypeKey: ia2a.DataPartMetadataTypeFunctionCall,
 			}
 			parts = append(parts, dataPart)
 		}
@@ -327,8 +348,15 @@ func (c *defaultEventToA2AMessage) convertToolCallToA2AMessage(
 
 			// Create DataPart with metadata indicating this is a function response
 			dataPart := protocol.NewDataPart(toolResponseData)
+
+			// Use ADK-compatible metadata key if enabled
+			metadataTypeKey := ia2a.DataPartMetadataTypeKey
+			if c.adkCompatibility {
+				metadataTypeKey = ia2a.GetADKMetadataKey(ia2a.DataPartMetadataTypeKey)
+			}
+
 			dataPart.Metadata = map[string]any{
-				ia2a.DataPartMetadataTypeKey: ia2a.DataPartMetadataTypeFunctionResp,
+				metadataTypeKey: ia2a.DataPartMetadataTypeFunctionResp,
 			}
 			parts = append(parts, dataPart)
 		}

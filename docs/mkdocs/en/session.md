@@ -44,23 +44,15 @@ import (
 )
 
 func main() {
-    ctx := context.Background()
-
     // 1. Create LLM model
-    llm, err := openai.NewModel(
-        openai.WithAPIKey("your-api-key"),
-        openai.WithModelName("gpt-4"),
-    )
-    if err != nil {
-        panic(err)
-    }
+    llm := openai.New("gpt-4", openai.WithAPIKey("your-api-key"))
 
     // 2. (Optional) Create summarizer - automatically compress long conversation history
     summarizer := summary.NewSummarizer(
         llm, // Use same LLM model for summary generation
         summary.WithChecksAny(                         // Trigger when any condition is met
-            summary.CheckEventThreshold(20),           // Trigger after 20 events
-            summary.CheckTokenThreshold(4000),         // Trigger after 4000 tokens
+            summary.CheckEventThreshold(20),           // Trigger when exceeds 20 events
+            summary.CheckTokenThreshold(4000),         // Trigger when exceeds 4000 tokens
             summary.CheckTimeThreshold(5*time.Minute), // Trigger after 5 minutes of inactivity
         ),
         summary.WithMaxSummaryWords(200), // Limit summary to 200 words
@@ -77,7 +69,7 @@ func main() {
     agent := llmagent.New(
         "my-agent",
         llmagent.WithModel(llm),
-        llmagent.WithSystemPrompt("You are a helpful assistant"),
+        llmagent.WithInstruction("You are a helpful assistant"),
         llmagent.WithAddSessionSummary(true), // Optional: enable summary injection to context
         // Note: WithAddSessionSummary(true) ignores WithMaxHistoryRuns configuration
         // Summary includes all history, incremental events fully retained
@@ -91,6 +83,7 @@ func main() {
     )
 
     // 6. First conversation
+    ctx := context.Background()
     userMsg1 := model.NewUserMessage("My name is Alice")
     eventChan, err := r.Run(ctx, "user123", "session-001", userMsg1)
     if err != nil {
@@ -204,8 +197,8 @@ import (
 summarizer := summary.NewSummarizer(
     summaryModel,
     summary.WithChecksAny(                         // Trigger when any condition is met
-        summary.CheckEventThreshold(20),           // Trigger after 20 events
-        summary.CheckTokenThreshold(4000),         // Trigger after 4000 tokens
+        summary.CheckEventThreshold(20),           // Trigger when exceeds 20 events
+        summary.CheckTokenThreshold(4000),         // Trigger when exceeds 4000 tokens
         summary.CheckTimeThreshold(5*time.Minute), // Trigger after 5 minutes of inactivity
     ),
     summary.WithMaxSummaryWords(200),              // Limit summary to 200 words
@@ -335,7 +328,7 @@ Suitable for development environments and small-scale applications, no external 
 - **`WithUserStateTTL(ttl time.Duration)`**: Set TTL for user-level state. Default is 0 (no expiration).
 - **`WithCleanupInterval(interval time.Duration)`**: Set interval for automatic cleanup of expired data. Default is 0 (auto-determined), if any TTL is configured, default cleanup interval is 5 minutes.
 - **`WithSummarizer(s summary.SessionSummarizer)`**: Inject session summarizer.
-- **`WithAsyncSummaryNum(num int)`**: Set number of summary processing workers. Default is 2.
+- **`WithAsyncSummaryNum(num int)`**: Set number of summary processing workers. Default is 3.
 - **`WithSummaryQueueSize(size int)`**: Set summary task queue size. Default is 100.
 - **`WithSummaryJobTimeout(timeout time.Duration)`**: Set timeout for single summary task. Default is 30 seconds.
 
@@ -405,7 +398,7 @@ Suitable for production environments and distributed applications, provides high
 - **`WithAppStateTTL(ttl time.Duration)`**: Set TTL for application-level state. Default is 0 (no expiration).
 - **`WithUserStateTTL(ttl time.Duration)`**: Set TTL for user-level state. Default is 0 (no expiration).
 - **`WithSummarizer(s summary.SessionSummarizer)`**: Inject session summarizer.
-- **`WithAsyncSummaryNum(num int)`**: Set number of summary processing workers. Default is 2.
+- **`WithAsyncSummaryNum(num int)`**: Set number of summary processing workers. Default is 3.
 - **`WithSummaryQueueSize(size int)`**: Set summary task queue size. Default is 100.
 - **`WithExtraOptions(extraOptions ...interface{})`**: Set extra options for Redis client.
 
@@ -520,20 +513,21 @@ Suitable for production environments and applications requiring complex queries,
 
 **Async Persistence Configuration:**
 
-- **`WithAsyncPersisterNum(num int)`**: Number of async persistence workers. Default is 2.
-- **`WithPersistQueueSize(size int)`**: Persistence task queue size. Default is 1000.
+- **`WithEnableAsyncPersist(enable bool)`**: Enable async persistence. Default is `false`.
+- **`WithAsyncPersisterNum(num int)`**: Number of async persistence workers. Default is 10.
 
 **Summary Configuration:**
 
 - **`WithSummarizer(s summary.SessionSummarizer)`**: Inject session summarizer.
-- **`WithAsyncSummaryNum(num int)`**: Number of summary processing workers. Default is 2.
+- **`WithAsyncSummaryNum(num int)`**: Number of summary processing workers. Default is 3.
 - **`WithSummaryQueueSize(size int)`**: Summary task queue size. Default is 100.
+- **`WithSummaryJobTimeout(timeout time.Duration)`**: Set timeout for single summary task. Default is 30 seconds.
 
 **Schema and Table Configuration:**
 
 - **`WithSchema(schema string)`**: Specify schema name.
 - **`WithTablePrefix(prefix string)`**: Table name prefix.
-- **`WithSkipDBInit()`**: Skip automatic table creation.
+- **`WithSkipDBInit(skip bool)`**: Skip automatic table creation.
 
 ### Basic Configuration Example
 
@@ -573,7 +567,6 @@ sessionService, err := postgres.NewService(
 
     // Async persistence configuration
     postgres.WithAsyncPersisterNum(4),
-    postgres.WithPersistQueueSize(2000),
 )
 // Effect:
 // - Use SSL encrypted connection
@@ -735,6 +728,20 @@ CREATE TABLE session_events (
     deleted_at TIMESTAMP
 );
 
+-- Track events table.
+CREATE TABLE session_track_events (
+    id BIGSERIAL PRIMARY KEY,
+    app_name VARCHAR(255) NOT NULL,
+    user_id VARCHAR(255) NOT NULL,
+    session_id VARCHAR(255) NOT NULL,
+    track VARCHAR(255) NOT NULL,
+    event JSONB NOT NULL,
+    created_at TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP NOT NULL,
+    expires_at TIMESTAMP,
+    deleted_at TIMESTAMP
+);
+
 -- Session summaries table
 CREATE TABLE session_summaries (
     id BIGSERIAL PRIMARY KEY,
@@ -799,19 +806,20 @@ Suitable for production environments and applications requiring complex queries,
 
 **Async Persistence Configuration:**
 
-- **`WithAsyncPersisterNum(num int)`**: Number of async persistence workers. Default is 2.
-- **`WithPersistQueueSize(size int)`**: Persistence task queue size. Default is 1000.
+- **`WithEnableAsyncPersist(enable bool)`**: Enable async persistence. Default is `false`.
+- **`WithAsyncPersisterNum(num int)`**: Number of async persistence workers. Default is 10.
 
 **Summary Configuration:**
 
 - **`WithSummarizer(s summary.SessionSummarizer)`**: Inject session summarizer.
-- **`WithAsyncSummaryNum(num int)`**: Number of summary processing workers. Default is 2.
+- **`WithAsyncSummaryNum(num int)`**: Number of summary processing workers. Default is 3.
 - **`WithSummaryQueueSize(size int)`**: Summary task queue size. Default is 100.
+- **`WithSummaryJobTimeout(timeout time.Duration)`**: Set timeout for single summary task. Default is 30 seconds.
 
 **Table Configuration:**
 
 - **`WithTablePrefix(prefix string)`**: Table name prefix.
-- **`WithSkipDBInit()`**: Skip automatic table creation.
+- **`WithSkipDBInit(skip bool)`**: Skip automatic table creation.
 
 ### Basic Configuration Example
 
@@ -845,7 +853,6 @@ sessionService, err := mysql.NewService(
 
     // Async persistence configuration
     mysql.WithAsyncPersisterNum(4),
-    mysql.WithPersistQueueSize(2000),
 )
 // Effect:
 // - Session expires after 30 minutes of inactivity
@@ -1108,19 +1115,13 @@ import (
 )
 
 // Create LLM model for summarization.
-summaryModel, err := openai.NewModel(
-    openai.WithAPIKey("your-api-key"),
-    openai.WithModelName("gpt-4"),
-)
-if err != nil {
-    panic(err)
-}
+summaryModel := openai.New("gpt-4", openai.WithAPIKey("your-api-key"))
 
 // Create summarizer with trigger conditions.
 summarizer := summary.NewSummarizer(
     summaryModel,
-    summary.WithEventThreshold(20),        // Trigger after 20 events.
-    summary.WithTokenThreshold(4000),      // Trigger after 4000 tokens.
+    summary.WithEventThreshold(20),        // Trigger when exceeds 20 events.
+    summary.WithTokenThreshold(4000),      // Trigger when exceeds 4000 tokens.
     summary.WithMaxSummaryWords(200),      // Limit summary to 200 words.
 )
 ```
@@ -1168,7 +1169,7 @@ llmAgent := llmagent.New(
     "my-agent",
     llmagent.WithModel(summaryModel),
     llmagent.WithAddSessionSummary(true),   // Inject summary as system message.
-    llmagent.WithMaxHistoryRuns(10),        // Keep last 10 runs when summary exists.
+    llmagent.WithMaxHistoryRuns(10),        // Limit history runs when AddSessionSummary=false
 )
 
 // Create runner with session service.
@@ -1241,8 +1242,8 @@ Configure the summarizer behavior with the following options:
 
 **Trigger Conditions:**
 
-- **`WithEventThreshold(eventCount int)`**: Trigger summarization when the number of events exceeds the threshold. Example: `WithEventThreshold(20)` triggers after 20 events.
-- **`WithTokenThreshold(tokenCount int)`**: Trigger summarization when the total token count exceeds the threshold. Example: `WithTokenThreshold(4000)` triggers after 4000 tokens.
+- **`WithEventThreshold(eventCount int)`**: Trigger summarization when the number of events exceeds the threshold. Example: `WithEventThreshold(20)` triggers when exceeds 20 events.
+- **`WithTokenThreshold(tokenCount int)`**: Trigger summarization when the total token count exceeds the threshold. Example: `WithTokenThreshold(4000)` triggers when exceeds 4000 tokens.
 - **`WithTimeThreshold(interval time.Duration)`**: Trigger summarization when time elapsed since the last event exceeds the interval. Example: `WithTimeThreshold(5*time.Minute)` triggers after 5 minutes of inactivity.
 
 **Composite Conditions:**
@@ -1297,7 +1298,7 @@ Configure async summary processing in session services:
 - **`WithSummarizer(s summary.SessionSummarizer)`**: Inject the summarizer into the session service.
 - **`WithAsyncSummaryNum(num int)`**: Set the number of async worker goroutines for summary processing. Default is 2. More workers allow higher concurrency but consume more resources.
 - **`WithSummaryQueueSize(size int)`**: Set the size of the summary job queue. Default is 100. Larger queues allow more pending jobs but consume more memory.
-- **`WithSummaryJobTimeout(timeout time.Duration)`** _(in-memory only)_: Set the timeout for processing a single summary job. Default is 30 seconds.
+- **`WithSummaryJobTimeout(timeout time.Duration)`**: Set the timeout for processing a single summary job. Default is 30 seconds.
 
 ### Manual Summarization
 
@@ -1434,10 +1435,7 @@ func main() {
     ctx := context.Background()
 
     // Create LLM model for both chat and summarization.
-    llm, _ := openai.NewModel(
-        openai.WithAPIKey("your-api-key"),
-        openai.WithModelName("gpt-4"),
-    )
+    llm := openai.New("gpt-4", openai.WithAPIKey("your-api-key"))
 
     // Create summarizer with flexible trigger conditions.
     summarizer := summary.NewSummarizer(
@@ -1463,7 +1461,7 @@ func main() {
         "my-agent",
         llmagent.WithModel(llm),
         llmagent.WithAddSessionSummary(true),
-        llmagent.WithMaxHistoryRuns(10),
+        llmagent.WithMaxHistoryRuns(10),        // Limit history runs when AddSessionSummary=false
     )
 
     // Create runner.

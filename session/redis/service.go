@@ -32,16 +32,6 @@ var (
 	_ session.TrackService = (*Service)(nil)
 )
 
-const (
-	defaultSessionEventLimit   = 1000
-	defaultAsyncPersistTimeout = 2 * time.Second
-	defaultChanBufferSize      = 100
-	defaultAsyncPersisterNum   = 10
-
-	defaultAsyncSummaryNum  = 3
-	defaultSummaryQueueSize = 100
-)
-
 // SessionState is the state of a session.
 type SessionState struct {
 	ID        string           `json:"id"`
@@ -89,56 +79,26 @@ type summaryJob struct {
 
 // NewService creates a new redis session service.
 func NewService(options ...ServiceOpt) (*Service, error) {
-	opts := ServiceOpts{
-		sessionEventLimit:  defaultSessionEventLimit,
-		sessionTTL:         0,
-		appStateTTL:        0,
-		userStateTTL:       0,
-		asyncPersisterNum:  defaultAsyncPersisterNum,
-		enableAsyncPersist: false,
-		asyncSummaryNum:    defaultAsyncSummaryNum,
-		summaryQueueSize:   defaultSummaryQueueSize,
-		summaryJobTimeout:  30 * time.Second,
-	}
+	opts := defaultOptions
 	for _, option := range options {
 		option(&opts)
 	}
 
-	var redisClient redis.UniversalClient
-	var err error
-	builder := storage.GetClientBuilder()
-
-	// if instance name set, and url not set, use instance name to create redis client
-	if opts.url == "" && opts.instanceName != "" {
-		builderOpts, ok := storage.GetRedisInstance(opts.instanceName)
-		if !ok {
-			return nil, fmt.Errorf("redis instance %s not found", opts.instanceName)
-		}
-		redisClient, err = builder(builderOpts...)
-		if err != nil {
-			return nil, fmt.Errorf("create redis client from instance name failed: %w", err)
-		}
-		s := &Service{
-			opts:         opts,
-			redisClient:  redisClient,
-			sessionTTL:   opts.sessionTTL,
-			appStateTTL:  opts.appStateTTL,
-			userStateTTL: opts.userStateTTL,
-		}
-		if opts.enableAsyncPersist {
-			s.startAsyncPersistWorker()
-		}
-		// Always start async summary workers by default.
-		s.startAsyncSummaryWorker()
-		return s, nil
-	}
-
-	redisClient, err = builder(
+	builderOpts := []storage.ClientBuilderOpt{
 		storage.WithClientBuilderURL(opts.url),
 		storage.WithExtraOptions(opts.extraOptions...),
-	)
+	}
+	// if instance name set, and url not set, use instance name to create redis client
+	if opts.url == "" && opts.instanceName != "" {
+		var ok bool
+		if builderOpts, ok = storage.GetRedisInstance(opts.instanceName); !ok {
+			return nil, fmt.Errorf("redis instance %s not found", opts.instanceName)
+		}
+	}
+
+	redisClient, err := storage.GetClientBuilder()(builderOpts...)
 	if err != nil {
-		return nil, fmt.Errorf("create redis client from url failed: %w", err)
+		return nil, fmt.Errorf("create redis client failed: %w", err)
 	}
 
 	s := &Service{

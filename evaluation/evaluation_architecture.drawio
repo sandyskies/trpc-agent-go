@@ -1,0 +1,121 @@
+<mxfile host="65bd71144e">
+    <diagram name="Evaluation Architecture" id="eval-arch">
+        <mxGraphModel dx="491" dy="461" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="750" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="entry-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5E1FF;strokeColor=#5C9CFF;strokeWidth=3;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="80" width="980" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="entry-label" value="Entry Point" style="text;html=1;strokeColor=none;fillColor=#1E90FF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="90" width="80" height="22" as="geometry"/>
+                </mxCell>
+                <mxCell id="agent-evaluator" value="&lt;b style=&quot;font-size:14px&quot;&gt;🎯 AgentEvaluator&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;评估器核心入口&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E90FF;strokeColor=#1565C0;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="120" width="140" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="runner" value="&lt;b&gt;Runner&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;Agent 执行器&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5C9CFF;strokeColor=#1E90FF;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="120" width="120" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="service" value="&lt;b&gt;EvalService&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;评估服务层&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5C9CFF;strokeColor=#1E90FF;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="400" y="120" width="120" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="registry" value="&lt;b&gt;Registry&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;评估器注册表&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5C9CFF;strokeColor=#1E90FF;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="550" y="120" width="120" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="numruns" value="&lt;b&gt;NumRuns&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;多轮评估迭代&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#82B1FF;strokeColor=#5C9CFF;fontSize=12;align=center;fontColor=#1E90FF;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="700" y="120" width="120" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="data-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#4CAF50;strokeWidth=3;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="190" width="980" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="data-label" value="Data Layer" style="text;html=1;strokeColor=none;fillColor=#4CAF50;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="200" width="80" height="22" as="geometry"/>
+                </mxCell>
+                <mxCell id="evalset" value="&lt;b&gt;EvalSet&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;评估数据集&lt;br&gt;EvalCase 测试用例&lt;br&gt;Input + Expected Output&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="235" width="140" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="metric" value="&lt;b&gt;EvalMetric&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;评估指标配置&lt;br&gt;MetricName + Threshold&lt;br&gt;Criterion 判定准则&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66BB6A;strokeColor=#4CAF50;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="235" width="140" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="evaluator" value="&lt;b&gt;Evaluator&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;评估器接口&lt;br&gt;ToolTrajectory 轨迹评估&lt;br&gt;Custom 自定义评估&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81C784;strokeColor=#66BB6A;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="420" y="235" width="140" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="criterion" value="&lt;b&gt;Criterion&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;判定准则&lt;br&gt;Text / JSON / Trajectory&lt;br&gt;精确匹配 / 语义相似&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#81C784;fontSize=11;align=center;fontColor=#2E7D32;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="590" y="235" width="140" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="storage" value="&lt;b&gt;Storage&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;数据持久化&lt;br&gt;InMemory 内存&lt;br&gt;Local 本地文件&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#A5D6A7;fontSize=11;align=center;fontColor=#2E7D32;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="235" width="140" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="flow-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#757575;strokeWidth=3;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="330" width="980" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="flow-label" value="Pipeline" style="text;html=1;strokeColor=none;fillColor=#424242;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="340" width="80" height="22" as="geometry"/>
+                </mxCell>
+                <mxCell id="step1" value="&lt;b&gt;1️⃣ Load&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;加载 EvalSet&lt;br&gt;获取 EvalCase&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A1A1A;strokeColor=#000000;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="380" width="130" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="step2" value="&lt;b&gt;2️⃣ Inference&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;执行 Agent 推理&lt;br&gt;获取 Actual Output&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#1A1A1A;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="380" width="130" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="step3" value="&lt;b&gt;3️⃣ Evaluate&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;对比 Actual vs Expected&lt;br&gt;计算 Score&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#424242;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="420" y="380" width="130" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="step4" value="&lt;b&gt;4️⃣ Aggregate&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;多轮结果聚合&lt;br&gt;计算 Average Score&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#757575;strokeColor=#616161;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="590" y="380" width="130" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="step5" value="&lt;b&gt;5️⃣ Summarize&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;汇总 Overall Status&lt;br&gt;生成评估报告&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9E9E9E;strokeColor=#757575;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="760" y="380" width="130" height="55" as="geometry"/>
+                </mxCell>
+                <mxCell id="loop-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#424242;strokeWidth=2;dashed=1;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="370" width="330" height="75" as="geometry"/>
+                </mxCell>
+                <mxCell id="loop-label" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;🔁 Iteration Loop (NumRuns)&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=#BDBDBD;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=9;fontColor=#424242;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="450" width="140" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="output-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#82B1FF;strokeWidth=3;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="60" y="510" width="980" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="output-label" value="Output" style="text;html=1;strokeColor=none;fillColor=#1E90FF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="520" width="80" height="22" as="geometry"/>
+                </mxCell>
+                <mxCell id="out-eval" value="&lt;b&gt;EvaluationResult&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;整体评估结果&lt;br&gt;OverallStatus&lt;br&gt;ExecutionTime&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E90FF;strokeColor=#1565C0;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="555" width="150" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="out-case" value="&lt;b&gt;EvalCaseResult&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;用例评估结果&lt;br&gt;Per-Run Results&lt;br&gt;Aggregated Metrics&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5C9CFF;strokeColor=#1E90FF;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="260" y="555" width="150" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="out-metric" value="&lt;b&gt;EvalMetricResult&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;指标评估结果&lt;br&gt;Score / Threshold&lt;br&gt;Pass/Fail Status&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#82B1FF;strokeColor=#5C9CFF;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="440" y="555" width="150" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="out-invoc" value="&lt;b&gt;PerInvocationResult&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;单次调用结果&lt;br&gt;Actual vs Expected&lt;br&gt;Score + Details&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5E1FF;strokeColor=#82B1FF;fontSize=11;align=center;fontColor=#1E90FF;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="620" y="555" width="150" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="status-box" value="&lt;b&gt;EvalStatus&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;✅ Passed&lt;br&gt;❌ Failed&lt;br&gt;⚪ NotEvaluated&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#C5E1FF;fontSize=11;align=center;fontColor=#1E90FF;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="800" y="555" width="140" height="65" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#1A1A1A;" edge="1" parent="1" source="step1" target="step2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#424242;" edge="1" parent="1" source="step2" target="step3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#616161;" edge="1" parent="1" source="step3" target="step4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#757575;" edge="1" parent="1" source="step4" target="step5">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-o1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#1E90FF;" edge="1" parent="1" source="out-eval" target="out-case">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-o2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#5C9CFF;" edge="1" parent="1" source="out-case" target="out-metric">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-o3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#82B1FF;" edge="1" parent="1" source="out-metric" target="out-invoc">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
