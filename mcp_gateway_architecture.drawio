@@ -1,0 +1,166 @@
+<mxfile host="65bd71144e">
+    <diagram name="MCP Gateway Architecture" id="mcp-gateway-arch">
+        <mxGraphModel dx="491" dy="461" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=none;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry width="1400" height="1000" as="geometry"/>
+                </mxCell>
+                <mxCell id="client-box" value="&lt;b style=&quot;font-size:14px&quot;&gt;Client&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;cursor / cline / claude desktop&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2979FF;strokeColor=#1565C0;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="40" width="200" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="user-icon" value="&lt;b&gt;用户&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#2979FF;strokeColor=#1565C0;fontFamily=PingFang SC;fontColor=#1565C0;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="120" width="40" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="user-config" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;配置mcp服务url&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#424242;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="100" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="url-text" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;https://03mcp.woa.com/sse/m6ygk7m8y6b73r&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=#C5E1FF;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#0D47A1;fontFamily=PingFang SC;spacingLeft=5;spacingRight=5;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="125" width="280" height="22" as="geometry"/>
+                </mxCell>
+                <mxCell id="token-text" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;填写 private token换取mcp请求url&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#424242;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="330" width="200" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="sse-endpoint" value="&lt;b&gt;SSE Endpoint&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#2979FF;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="430" y="100" width="100" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="message-endpoint" value="&lt;b&gt;message endpoint&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#2979FF;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="720" y="100" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="ias-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5E1FF;strokeColor=#2979FF;strokeWidth=2;dashed=1;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="180" width="820" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="ias-label" value="&lt;b style=&quot;font-size:16px;color:#1565C0&quot;&gt;IAS&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#1565C0;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="190" width="60" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="ias-node1" value="&lt;b&gt;节点1&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2979FF;strokeColor=#1565C0;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="220" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="ias-node2" value="&lt;b&gt;节点2&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5C9CFF;strokeColor=#1565C0;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="220" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="ias-nodeN" value="&lt;b&gt;节点N&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#82B1FF;strokeColor=#2979FF;fontSize=12;align=center;fontColor=#0D47A1;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="740" y="220" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="sse-long1" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;sse长连接&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#424242;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="410" y="155" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="post-short1" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Post短连接&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#424242;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="155" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="gateway-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#4CAF50;strokeWidth=2;dashed=1;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="380" width="820" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="gateway-label" value="&lt;b style=&quot;font-size:16px;color:#2E7D32&quot;&gt;tRPC Gateway&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#2E7D32;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="390" width="140" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="gateway-node1" value="&lt;b&gt;节点1&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="440" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="gateway-node2" value="&lt;b&gt;节点2&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66BB6A;strokeColor=#2E7D32;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="440" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="gateway-nodeN" value="&lt;b&gt;节点N&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#4CAF50;fontSize=12;align=center;fontColor=#1B5E20;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="740" y="440" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="polaris-text" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;北极星注册&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#424242;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="395" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="sse-long2" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;sse长连接&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#424242;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="320" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="hijack-text" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;劫持请求并返回path添加/&lt;br&gt;m6ygk7m8y6b73r&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=#C8E6C9;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=9;fontColor=#1B5E20;fontFamily=PingFang SC;spacingLeft=3;spacingRight=3;" parent="1" vertex="1">
+                    <mxGeometry x="450" y="335" width="140" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="hash-text" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;根据/m6ygk7m8y6b73r 这个后缀找到03&lt;br&gt;token及用户信息以及要转发的服务，&lt;br&gt;这个id会用作一致性hash转发&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=#C8E6C9;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=9;fontColor=#1B5E20;fontFamily=PingFang SC;spacingLeft=5;spacingRight=5;" parent="1" vertex="1">
+                    <mxGeometry x="750" y="320" width="200" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="mcp-layer" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#616161;strokeWidth=2;dashed=1;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="600" width="820" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="mcp-label" value="&lt;b style=&quot;font-size:16px;color:#424242&quot;&gt;MCP服务&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontColor=#424242;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="610" width="100" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="mcp-node1" value="&lt;b&gt;节点1&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#1A1A1A;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="660" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="mcp-node2" value="&lt;b&gt;节点2&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#1A1A1A;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="660" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="mcp-nodeN" value="&lt;b&gt;节点N&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9E9E9E;strokeColor=#616161;fontSize=12;align=center;fontColor=#212121;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="740" y="660" width="120" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="sse-long3" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;sse长连接&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#424242;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="340" y="540" width="60" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="post-short2" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Post短连接&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#424242;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="540" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="proxy-header" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;设置x-proxy-user: jessemjchen&lt;br&gt;设置Authorization: Bearer xxx2347sdf&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=#E0E0E0;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=9;fontColor=#424242;fontFamily=PingFang SC;spacingLeft=5;spacingRight=5;" parent="1" vertex="1">
+                    <mxGeometry x="450" y="555" width="220" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="redis-storage" value="&lt;b style=&quot;font-size:12px&quot;&gt;Redis&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;session存储&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#4CAF50;strokeColor=#2E7D32;fontColor=#ffffff;fontFamily=PingFang SC;shadow=1;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="580" y="820" width="100" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="post-return" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Post数据返回&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#424242;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="430" y="760" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="post-process" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Post数据处理&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#424242;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="590" y="760" width="80" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-client-ias1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#2979FF;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" parent="1" source="client-box" target="ias-node1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-client-ias2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#2979FF;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" parent="1" source="client-box" target="ias-node2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-user-url" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=1;strokeColor=#424242;exitX=1;exitY=0.3;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="user-icon" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="120" y="135" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="arr-ias-gw1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#4CAF50;" parent="1" source="ias-node1" target="gateway-node1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-ias-gw2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#4CAF50;" parent="1" source="ias-node2" target="gateway-node2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-gw-mcp1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#616161;" parent="1" source="gateway-node1" target="mcp-node1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-gw-mcp2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#616161;" parent="1" source="gateway-node2" target="mcp-node2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-mcp-redis1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#4CAF50;dashed=1;" parent="1" source="mcp-node1" target="redis-storage" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="440" y="780"/>
+                            <mxPoint x="630" y="780"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="arr-mcp-redis2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#4CAF50;dashed=1;" parent="1" source="mcp-node2" target="redis-storage" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-mcp-redis3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#4CAF50;dashed=1;" parent="1" source="mcp-nodeN" target="redis-storage" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="800" y="780"/>
+                            <mxPoint x="630" y="780"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="arr-polaris" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=1;strokeColor=#424242;dashed=1;" parent="1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="80" y="200" as="sourcePoint"/>
+                        <mxPoint x="280" y="430" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="80" y="430"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
