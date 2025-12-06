@@ -1,0 +1,156 @@
+<mxfile host="65bd71144e">
+    <diagram name="Planner Architecture" id="planner-arch">
+        <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="750" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=none;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry width="1600" height="750" as="geometry"/>
+                </mxCell>
+                <mxCell id="title" value="&lt;b style=&quot;font-size:20px&quot;&gt;Planner 架构 — 多模式规划器&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontColor=#1E90FF;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="20" width="400" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="interface-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5E1FF;strokeColor=#5C9CFF;strokeWidth=3;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="70" width="1480" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="interface-label" value="Planner 接口" style="text;html=1;strokeColor=none;fillColor=#1E90FF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=16;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="80" width="120" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="planner-interface" value="&lt;b style=&quot;font-size:14px&quot;&gt;🎯 Planner Interface&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;BuildPlanningInstruction(ctx, invocation, request) → string&lt;br&gt;ProcessPlanningResponse(ctx, invocation, response) → *Response&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E90FF;strokeColor=#1565C0;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="118" width="400" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="agent-box" value="&lt;b&gt;Agent&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;选择 Planner&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5C9CFF;strokeColor=#1E90FF;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="118" width="100" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="model-box" value="&lt;b&gt;Model&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;LLM 调用&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5C9CFF;strokeColor=#1E90FF;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="700" y="118" width="100" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="tool-box" value="&lt;b&gt;Tool&lt;/b&gt;&lt;br&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;工具执行&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5C9CFF;strokeColor=#1E90FF;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="860" y="118" width="100" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="modes-hint" value="&lt;b style=&quot;font-size:13px&quot;&gt;🔀 多种模式可选&lt;/b&gt;&lt;hr style=&quot;margin:3px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;根据模型能力选择合适的 Planner&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#82B1FF;strokeColor=#5C9CFF;fontSize=11;align=center;fontColor=#1E90FF;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="1020" y="118" width="220" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="select-hint" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;💡 Agent 通过 WithPlanner() 配置&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=#E3F2FD;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=10;fontColor=#1E90FF;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="1300" y="140" width="200" height="25" as="geometry"/>
+                </mxCell>
+                <mxCell id="builtin-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#4CAF50;strokeWidth=3;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="220" width="480" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="builtin-label" value="&lt;b&gt;模式 1：Builtin Planner&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=#4CAF50;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="230" width="200" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="builtin-desc" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;内置思考能力&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#2E7D32;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="230" width="100" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="builtin-input" value="&lt;b&gt;📥 Query&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="280" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="builtin-config" value="&lt;b&gt;⚙️ 配置思考参数&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#66BB6A;strokeColor=#4CAF50;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="190" y="280" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="builtin-llm" value="&lt;b&gt;🧠 LLM 内部思考&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81C784;strokeColor=#66BB6A;fontSize=11;align=center;fontColor=#2E7D32;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="280" width="130" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="builtin-output" value="&lt;b&gt;📤 Response&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="350" width="80" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="builtin-models" value="&lt;b style=&quot;font-size:11px&quot;&gt;🎯 适用&lt;/b&gt;: o1/o3, Claude 3.5+, Gemini 2.0+" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A5D6A7;strokeColor=#81C784;fontSize=10;align=center;fontColor=#2E7D32;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="420" width="380" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="react-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#757575;strokeWidth=3;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="560" y="220" width="480" height="250" as="geometry"/>
+                </mxCell>
+                <mxCell id="react-label" value="&lt;b&gt;模式 2：React Planner&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=#1A1A1A;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="580" y="230" width="200" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="react-desc" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;显式规划指令&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#424242;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="790" y="230" width="100" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="react-input" value="&lt;b&gt;📥&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A1A1A;strokeColor=#000000;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="580" y="280" width="50" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="react-planning" value="&lt;b&gt;📋 PLANNING&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#1A1A1A;fontSize=10;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="280" width="90" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="react-reasoning" value="&lt;b&gt;💭 REASONING&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#424242;fontSize=10;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="760" y="280" width="90" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="react-action" value="&lt;b&gt;⚡ ACTION&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#757575;strokeColor=#616161;fontSize=10;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="870" y="280" width="90" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="react-final" value="&lt;b&gt;✅ FINAL&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9E9E9E;strokeColor=#757575;fontSize=10;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="980" y="280" width="50" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="react-loop" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#424242;strokeWidth=2;dashed=1;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="750" y="270" width="220" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="react-loop-label" value="&lt;font style=&quot;font-size: 9px;&quot;&gt;🔁 循环&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=#BDBDBD;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=9;fontColor=#424242;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="830" y="335" width="50" height="16" as="geometry"/>
+                </mxCell>
+                <mxCell id="react-models" value="&lt;b style=&quot;font-size:11px&quot;&gt;🎯 适用&lt;/b&gt;: GPT-4, 普通 LLM, 无内置思考能力的模型" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BDBDBD;strokeColor=#9E9E9E;fontSize=10;align=center;fontColor=#1A1A1A;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="580" y="420" width="380" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="custom-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#82B1FF;strokeWidth=3;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="490" width="980" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="custom-label" value="&lt;b&gt;模式 3：自定义 Planner&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=#1E90FF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=14;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="500" width="200" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="custom-desc" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;自定义规划逻辑&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#1E90FF;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="500" width="120" height="28" as="geometry"/>
+                </mxCell>
+                <mxCell id="custom-step1" value="&lt;b&gt;1️⃣ 实现接口&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E90FF;strokeColor=#1565C0;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="545" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="custom-step2" value="&lt;b&gt;2️⃣ 构建指令&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#5C9CFF;strokeColor=#1E90FF;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="230" y="545" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="custom-step3" value="&lt;b&gt;3️⃣ 处理响应&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#82B1FF;strokeColor=#5C9CFF;fontSize=11;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="545" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="custom-step4" value="&lt;b&gt;4️⃣ 注册使用&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#A6C8FF;strokeColor=#82B1FF;fontSize=11;align=center;fontColor=#1E90FF;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="545" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="custom-example" value="&lt;b&gt;💡 示例&lt;/b&gt;: CoT (思维链) | ToT (思维树) | ReWOO | Plan-and-Solve" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5E1FF;strokeColor=#A6C8FF;fontSize=10;align=center;fontColor=#1E90FF;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="545" width="340" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-b1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#4CAF50;" parent="1" source="builtin-input" target="builtin-config" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-b2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#66BB6A;" parent="1" source="builtin-config" target="builtin-llm" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-b3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#81C784;" parent="1" source="builtin-llm" target="builtin-output" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="500" y="300"/>
+                            <mxPoint x="500" y="370"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="arr-r1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#1A1A1A;" parent="1" source="react-input" target="react-planning" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-r2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#424242;" parent="1" source="react-planning" target="react-reasoning" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-r3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#616161;" parent="1" source="react-reasoning" target="react-action" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-r4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#757575;" parent="1" source="react-action" target="react-final" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-c1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#1E90FF;" parent="1" source="custom-step1" target="custom-step2" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-c2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#5C9CFF;" parent="1" source="custom-step2" target="custom-step3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-c3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#82B1FF;" parent="1" source="custom-step3" target="custom-step4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
