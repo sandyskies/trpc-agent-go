@@ -1,0 +1,100 @@
+<mxfile host="65bd71144e">
+    <diagram name="元宝写小说Agent架构" id="yuanbao-novel-arch">
+        <mxGraphModel dx="800" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="500" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=none;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry width="1100" height="500" as="geometry"/>
+                </mxCell>
+                <mxCell id="title" value="元宝AI写小说 Agent架构图" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontColor=#2979FF;fontFamily=PingFang SC;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="350" y="20" width="400" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="user" value="用户" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#2979FF;strokeColor=#2979FF;fontFamily=PingFang SC;fontColor=#2979FF;fontStyle=1;fontSize=12" parent="1" vertex="1">
+                    <mxGeometry x="50" y="200" width="40" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="intent-agent" value="意图识别Agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2979FF;strokeColor=#2979FF;fontSize=13;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="160" y="200" width="130" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="outline-agent" value="大纲Agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#4CAF50;fontSize=13;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="360" y="200" width="130" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="content-agent" value="内容Agent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#424242;fontSize=13;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="560" y="200" width="130" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="output-panel" value="右侧分屏" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9E9E9E;strokeColor=#9E9E9E;fontSize=13;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="760" y="200" width="130" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="storage" value="状态存储" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=8;fillColor=#4CAF50;strokeColor=#4CAF50;fontColor=#ffffff;fontFamily=PingFang SC;shadow=1;strokeWidth=2;fontSize=11;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="940" y="195" width="80" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#2979FF;" parent="1" source="user" target="intent-agent" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#4CAF50;" parent="1" source="intent-agent" target="outline-agent" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#424242;" parent="1" source="outline-agent" target="content-agent" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#9E9E9E;" parent="1" source="content-agent" target="output-panel" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#4CAF50;dashed=1;startArrow=classic;startFill=1;" parent="1" source="output-panel" target="storage" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="func1-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#82B1FF;strokeWidth=1;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="80" width="150" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="func1-title" value="创作引导" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#2979FF;fontFamily=PingFang SC;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="150" y="90" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="func1-desc" value="识别写作意图，返回引导信息" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#5C9CFF;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="115" width="150" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="func2-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#81C784;strokeWidth=1;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="80" width="150" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="func2-title" value="大纲管理" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#4CAF50;fontFamily=PingFang SC;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="350" y="90" width="150" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="func2-desc" value="生成大纲 / 修改优化" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#66BB6A;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="115" width="150" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="func3-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#BDBDBD;strokeWidth=1;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="80" width="350" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="func3-title" value="内容生成" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontColor=#424242;fontFamily=PingFang SC;fontStyle=1" parent="1" vertex="1">
+                    <mxGeometry x="550" y="90" width="350" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="func3-desc" value="逐章生成 / 中断恢复 / 续写 / 重写" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#757575;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="550" y="115" width="350" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-f1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=1;strokeColor=#82B1FF;dashed=1;" parent="1" source="func1-box" target="intent-agent" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-f2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=1;strokeColor=#81C784;dashed=1;" parent="1" source="func2-box" target="outline-agent" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="arr-f3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=1;strokeColor=#BDBDBD;dashed=1;" parent="1" source="func3-box" target="content-agent" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="note1" value="输入" style="text;html=1;strokeColor=none;fillColor=#82B1FF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=9;fontColor=#ffffff;fontFamily=PingFang SC;spacingLeft=5;spacingRight=5;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="310" width="40" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="note2" value="意图识别" style="text;html=1;strokeColor=none;fillColor=#2979FF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=9;fontColor=#ffffff;fontFamily=PingFang SC;spacingLeft=5;spacingRight=5;" parent="1" vertex="1">
+                    <mxGeometry x="185" y="310" width="60" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="note3" value="大纲生成" style="text;html=1;strokeColor=none;fillColor=#4CAF50;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=9;fontColor=#ffffff;fontFamily=PingFang SC;spacingLeft=5;spacingRight=5;" parent="1" vertex="1">
+                    <mxGeometry x="385" y="310" width="60" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="note4" value="内容生成" style="text;html=1;strokeColor=none;fillColor=#424242;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=9;fontColor=#ffffff;fontFamily=PingFang SC;spacingLeft=5;spacingRight=5;" parent="1" vertex="1">
+                    <mxGeometry x="585" y="310" width="60" height="18" as="geometry"/>
+                </mxCell>
+                <mxCell id="note5" value="输出" style="text;html=1;strokeColor=none;fillColor=#9E9E9E;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=9;fontColor=#ffffff;fontFamily=PingFang SC;spacingLeft=5;spacingRight=5;" parent="1" vertex="1">
+                    <mxGeometry x="795" y="310" width="40" height="18" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
