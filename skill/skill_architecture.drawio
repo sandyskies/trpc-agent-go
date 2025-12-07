@@ -1,48 +1,39 @@
 <mxfile host="65bd71144e">
     <diagram name="Skill Architecture" id="skill-arch">
-        <mxGraphModel dx="800" dy="550" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1150" pageHeight="500" math="0" shadow="0">
+        <mxGraphModel dx="491" dy="461" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1150" pageHeight="500" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=none;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry width="1150" height="500" as="geometry"/>
+                <mxCell id="2" style="edgeStyle=none;html=1;strokeWidth=2;strokeColor=#007FFF;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=-0.021;entryY=0.627;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="discovery-bg" target="agent">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="230" y="90" as="targetPoint"/>
+                    </mxGeometry>
                 </mxCell>
-                
-                <!-- Left: Discovery -->
-                <mxCell id="discovery-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1E88E5;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                <mxCell id="discovery-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1E88E5;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="20" y="30" width="180" height="240" as="geometry"/>
                 </mxCell>
-                <mxCell id="discovery-title" value="&lt;b&gt;🔍 技能发现&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E88E5;strokeColor=#1565C0;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                <mxCell id="discovery-title" value="&lt;b&gt;🔍 技能发现&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E88E5;strokeColor=#1565C0;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="30" y="42" width="160" height="28" as="geometry"/>
                 </mxCell>
-                
-                <mxCell id="scan-box" value="&lt;b&gt;① 扫描索引&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;FSRepository 遍历目录&lt;br&gt;解析 SKILL.md&lt;br&gt;Summaries() 返回概览&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64B5F6;fontSize=10;align=center;fontColor=#1565C0;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                <mxCell id="scan-box" value="&lt;b&gt;① 扫描索引&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;FSRepository 遍历目录&lt;br&gt;解析 SKILL.md&lt;br&gt;Summaries() 返回概览&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#64B5F6;fontSize=10;align=center;fontColor=#1565C0;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="30" y="82" width="160" height="68" as="geometry"/>
                 </mxCell>
-                
-                <mxCell id="inject-box" value="&lt;b&gt;② 注入上下文&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;RequestProcessor 调用&lt;br&gt;注入 System Message&lt;br&gt;&lt;i&gt;Available skills: ...&lt;/i&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1E88E5;fontSize=10;align=center;fontColor=#1565C0;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                <mxCell id="inject-box" value="&lt;b&gt;② 注入上下文&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;RequestProcessor 调用&lt;br&gt;注入 System Message&lt;br&gt;&lt;i&gt;Available skills: ...&lt;/i&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1E88E5;fontSize=10;align=center;fontColor=#1565C0;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="30" y="165" width="160" height="68" as="geometry"/>
                 </mxCell>
-                
-                <mxCell id="arr-scan-inj" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#1E88E5;" parent="1" source="scan-box" target="inject-box" edge="1">
+                <mxCell id="arr-scan-inj" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#1E88E5;" edge="1" parent="1" source="scan-box" target="inject-box">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                
-                <!-- Middle: Agent & Tools -->
                 <mxCell id="agent" value="&lt;b style=&quot;font-size:13px&quot;&gt;🤖 Agent&lt;/b&gt;&lt;hr style=&quot;margin:3px 0&quot;&gt;&lt;font style=&quot;font-size:10px&quot;&gt;LLM + Tools&lt;br&gt;系统消息含技能列表&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E90FF;strokeColor=#1565C0;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=3;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="240" y="42" width="140" height="75" as="geometry"/>
                 </mxCell>
-                
                 <mxCell id="skill-tools" value="&lt;b style=&quot;font-size:11px&quot;&gt;🔧 Skill Tools&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;skill_load | skill_run&lt;br&gt;list_docs | select_docs&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontSize=10;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="240" y="150" width="140" height="60" as="geometry"/>
                 </mxCell>
-                
                 <mxCell id="executor" value="&lt;b&gt;⚙️ CodeExecutor&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Local / Container 执行&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#455A64;strokeColor=#263238;fontSize=10;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="240" y="240" width="140" height="50" as="geometry"/>
                 </mxCell>
-                
-                <!-- Right: Skill Module -->
-                <mxCell id="skill-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=3;fontFamily=PingFang SC;" parent="1" vertex="1">
+                <mxCell id="skill-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#4CAF50;strokeWidth=3;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="420" y="30" width="710" height="260" as="geometry"/>
                 </mxCell>
                 <mxCell id="skill-title" value="&lt;b&gt;📦 Skill 技能模块&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=#2E7D32;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
@@ -51,79 +42,46 @@
                 <mxCell id="skill-desc" value="&lt;font style=&quot;font-size:10px&quot;&gt;可复用能力单元 / 模型无关 / 代码执行&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#2E7D32;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="580" y="42" width="280" height="28" as="geometry"/>
                 </mxCell>
-                
-                <!-- Row 1: Definition & Repository & Workspace -->
-                <mxCell id="def-box" value="&lt;b&gt;📄 技能定义&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;SKILL.md (YAML+Markdown)&lt;br&gt;name / description / body&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#81C784;fontSize=10;align=center;fontColor=#2E7D32;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                <mxCell id="def-box" value="&lt;b&gt;📄 技能定义&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;SKILL.md (YAML+Markdown)&lt;br&gt;name / description / body&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#81C784;fontSize=10;align=center;fontColor=#2E7D32;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="435" y="82" width="160" height="55" as="geometry"/>
                 </mxCell>
-                
-                <mxCell id="repo-box" value="&lt;b&gt;🗄️ Repository&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;FSRepository 实现&lt;br&gt;Summaries / Get / Path&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#81C784;fontSize=10;align=center;fontColor=#2E7D32;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                <mxCell id="repo-box" value="&lt;b&gt;🗄️ Repository&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;FSRepository 实现&lt;br&gt;Summaries / Get / Path&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#81C784;fontSize=10;align=center;fontColor=#2E7D32;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="610" y="82" width="160" height="55" as="geometry"/>
                 </mxCell>
-                
-                <mxCell id="ws-box" value="&lt;b&gt;📂 Workspace&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;$SKILLS_DIR | $WORK_DIR&lt;br&gt;$OUTPUT_DIR (out/)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#81C784;fontSize=10;align=center;fontColor=#2E7D32;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                <mxCell id="ws-box" value="&lt;b&gt;📂 Workspace&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;$SKILLS_DIR | $WORK_DIR&lt;br&gt;$OUTPUT_DIR (out/)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#81C784;fontSize=10;align=center;fontColor=#2E7D32;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="785" y="82" width="160" height="55" as="geometry"/>
                 </mxCell>
-                
                 <mxCell id="state-box" value="&lt;b&gt;📝 State&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Session State&lt;br&gt;Artifact&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#81C784;fontSize=10;align=center;fontColor=#2E7D32;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="960" y="82" width="155" height="55" as="geometry"/>
                 </mxCell>
-                
-                <!-- Row 2: Load & Run -->
                 <mxCell id="load-box" value="&lt;b&gt;📥 skill_load&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;加载技能到 Session&lt;br&gt;Body+Docs 注入上下文&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#66BB6A;fontSize=10;align=center;fontColor=#2E7D32;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="435" y="152" width="160" height="55" as="geometry"/>
                 </mxCell>
-                
                 <mxCell id="run-box" value="&lt;b&gt;🚀 skill_run&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Workspace 执行命令&lt;br&gt;增量同步 + IO Spec&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#66BB6A;fontSize=10;align=center;fontColor=#2E7D32;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="610" y="152" width="160" height="55" as="geometry"/>
                 </mxCell>
-                
-                <mxCell id="docs-box" value="&lt;b&gt;📋 Docs Tools&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;list_docs / select_docs&lt;br&gt;按需加载文档&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#66BB6A;fontSize=10;align=center;fontColor=#2E7D32;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                <mxCell id="docs-box" value="&lt;b&gt;📋 Docs Tools&lt;/b&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;font style=&quot;font-size:9px&quot;&gt;list_docs / select_docs&lt;br&gt;按需加载文档&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#66BB6A;fontSize=10;align=center;fontColor=#2E7D32;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="785" y="152" width="160" height="55" as="geometry"/>
                 </mxCell>
-                
-                <!-- Flow Summary -->
-                <mxCell id="flow-box" value="&lt;b&gt;执行流程:&lt;/b&gt; 发现技能 → LLM获取列表 → skill_load 加载 → skill_run 执行 → 收集输出" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFB300;fontSize=10;align=center;fontColor=#E65100;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                <mxCell id="flow-box" value="&lt;b&gt;执行流程:&lt;/b&gt; 发现技能 → LLM获取列表 → skill_load 加载 → skill_run 执行 → 收集输出" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FFB300;fontSize=10;align=center;fontColor=#E65100;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="435" y="225" width="680" height="35" as="geometry"/>
                 </mxCell>
-                
-                <!-- Arrows -->
-                <mxCell id="arr-inj-agent" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#1E88E5;fontFamily=PingFang SC;" parent="1" source="inject-box" target="agent" edge="1">
+                <mxCell id="arr-agent-tools" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#1E90FF;fontFamily=PingFang SC;" edge="1" parent="1" source="agent" target="skill-tools">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                
-                <mxCell id="arr-agent-tools" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#1E90FF;fontFamily=PingFang SC;" parent="1" source="agent" target="skill-tools" edge="1">
+                <mxCell id="arr-tools-skill" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#4CAF50;fontFamily=PingFang SC;" edge="1" parent="1" source="skill-tools" target="repo-box">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                
-                <mxCell id="arr-tools-skill" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#4CAF50;fontFamily=PingFang SC;" parent="1" source="skill-tools" target="repo-box" edge="1">
+                <mxCell id="arr-tools-exec" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#455A64;fontFamily=PingFang SC;" edge="1" parent="1" source="skill-tools" target="executor">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                
-                <mxCell id="arr-tools-exec" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#455A64;fontFamily=PingFang SC;" parent="1" source="skill-tools" target="executor" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                
-                <mxCell id="arr-exec-ws" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#607D8B;dashed=1;" parent="1" source="executor" target="ws-box" edge="1">
+                <mxCell id="arr-exec-ws" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#607D8B;dashed=1;" edge="1" parent="1" source="executor" target="ws-box">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="310" y="310"/>
                             <mxPoint x="865" y="310"/>
                         </Array>
                     </mxGeometry>
-                </mxCell>
-                
-                <!-- Storage -->
-                <mxCell id="storage-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECEFF1;strokeColor=#78909C;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry x="20" y="340" width="1095" height="55" as="geometry"/>
-                </mxCell>
-                <mxCell id="storage-label" value="&lt;b&gt;💿 Storage:&lt;/b&gt; FileSystem (技能仓库) | Session Store (状态) | Artifact Store (输出)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontColor=#455A64;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry x="20" y="350" width="1095" height="35" as="geometry"/>
-                </mxCell>
-                
-                <!-- Legend -->
-                <mxCell id="legend" value="&lt;font style=&quot;font-size:9px&quot;&gt;🔵 发现  🔷 Agent  🟢 Skill  ⬛ 执行&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontColor=#757575;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry x="890" y="410" width="220" height="25" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
