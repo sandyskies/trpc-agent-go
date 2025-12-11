@@ -1,14 +1,14 @@
 <mxfile host="65bd71144e">
     <diagram name="Knowledge Architecture" id="knowledge-arch">
-        <mxGraphModel dx="491" dy="461" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+        <mxGraphModel dx="491" dy="461" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="900" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fafafa;strokeColor=none;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry width="1600" height="900" as="geometry"/>
+                    <mxGeometry width="1800" height="900" as="geometry"/>
                 </mxCell>
                 <mxCell id="layer1-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C5E1FF;strokeColor=#2979FF;strokeWidth=3;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry x="60" y="100" width="1480" height="150" as="geometry"/>
+                    <mxGeometry x="60" y="100" width="1650" height="150" as="geometry"/>
                 </mxCell>
                 <mxCell id="layer1-label" value="① API 接口层" style="text;html=1;strokeColor=none;fillColor=#2979FF;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=18;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="80" y="110" width="160" height="35" as="geometry"/>
@@ -43,7 +43,7 @@
                     <mxGeometry x="1340" y="155" width="160" height="85" as="geometry"/>
                 </mxCell>
                 <mxCell id="layer2-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#4CAF50;strokeWidth=3;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry x="60" y="270" width="1480" height="250" as="geometry"/>
+                    <mxGeometry x="60" y="270" width="1650" height="250" as="geometry"/>
                 </mxCell>
                 <mxCell id="layer2-label" value="② Search Pipeline — 智能检索流程" style="text;html=1;strokeColor=none;fillColor=#4CAF50;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=18;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="80" y="280" width="350" height="35" as="geometry"/>
@@ -94,7 +94,7 @@
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="layer3-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#616161;strokeWidth=3;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry x="60" y="540" width="1480" height="250" as="geometry"/>
+                    <mxGeometry x="60" y="540" width="1650" height="250" as="geometry"/>
                 </mxCell>
                 <mxCell id="layer3-label" value="③ Load Pipeline — 数据加载流程" style="text;html=1;strokeColor=none;fillColor=#424242;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=18;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="80" y="550" width="350" height="35" as="geometry"/>
@@ -105,34 +105,43 @@
                 <mxCell id="l-document" value="&lt;b style=&quot;font-size:13px&quot;&gt;📄 Document&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;文档对象&lt;br&gt;ID | Content | Metadata&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#1A1A1A;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="280" y="610" width="150" height="95" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-chunking" value="&lt;b style=&quot;font-size:13px&quot;&gt;✂️ Chunking&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;文档分块&lt;br&gt;策略配置 | 重叠处理&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#1A1A1A;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                <mxCell id="l-ocr" value="&lt;b style=&quot;font-size:13px&quot;&gt;👁️ OCR&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;图片文字识别&lt;br&gt;PDF 图片提取&lt;br&gt;ExtractText()&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#757575;strokeColor=#424242;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="480" y="610" width="150" height="95" as="geometry"/>
                 </mxCell>
+                <mxCell id="l-ocr-impl" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Tesseract OCR&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BDBDBD;strokeColor=#757575;fontSize=10;align=center;fontColor=#212121;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="715" width="150" height="35" as="geometry"/>
+                </mxCell>
+                <mxCell id="l-chunking" value="&lt;b style=&quot;font-size:13px&quot;&gt;✂️ Chunking&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;文档分块&lt;br&gt;策略配置 | 重叠处理&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#1A1A1A;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="610" width="150" height="95" as="geometry"/>
+                </mxCell>
                 <mxCell id="l-embedder" value="&lt;b style=&quot;font-size:13px&quot;&gt;🔢 Embedder&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;向量Embedding&lt;br&gt;GetEmbedding() | 批量处理&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#1A1A1A;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry x="680" y="610" width="160" height="95" as="geometry"/>
+                    <mxGeometry x="880" y="610" width="160" height="95" as="geometry"/>
                 </mxCell>
                 <mxCell id="l-embedder-impl" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;OpenAI | Gemini | HuggingFace | Ollama&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BDBDBD;strokeColor=#757575;fontSize=10;align=center;fontColor=#212121;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry x="680" y="715" width="160" height="35" as="geometry"/>
+                    <mxGeometry x="880" y="715" width="160" height="35" as="geometry"/>
                 </mxCell>
                 <mxCell id="l-vectorstore" value="&lt;b style=&quot;font-size:13px&quot;&gt;🗄️ VectorStore&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;向量存储&lt;br&gt;Add() | 持久化&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#1A1A1A;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry x="890" y="610" width="150" height="95" as="geometry"/>
+                    <mxGeometry x="1090" y="610" width="150" height="95" as="geometry"/>
                 </mxCell>
                 <mxCell id="l-vectorstore-impl" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;InMemory | ES | PgVector | TcVector&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BDBDBD;strokeColor=#757575;fontSize=10;align=center;fontColor=#212121;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry x="890" y="715" width="150" height="35" as="geometry"/>
+                    <mxGeometry x="1090" y="715" width="150" height="35" as="geometry"/>
                 </mxCell>
                 <mxCell id="l-sync" value="&lt;b style=&quot;font-size:13px&quot;&gt;🔄 增量同步&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;• 文档去重 (DocumentID)&lt;br&gt;• 变更检测 (shouldProcess)&lt;br&gt;• 孤儿文档清理&lt;br&gt;• 元数据缓存&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#757575;strokeColor=#424242;fontSize=11;align=left;fontColor=#ffffff;spacingLeft=10;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry x="1090" y="610" width="180" height="105" as="geometry"/>
+                    <mxGeometry x="1290" y="610" width="180" height="105" as="geometry"/>
                 </mxCell>
                 <mxCell id="l-concurrency" value="&lt;b style=&quot;font-size:13px&quot;&gt;⚡ 并发控制&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;• Source 并发加载&lt;br&gt;• Document 并发处理&lt;br&gt;• Worker Pool (ants)&lt;br&gt;• 进度统计&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#757575;strokeColor=#424242;fontSize=11;align=left;fontColor=#ffffff;spacingLeft=10;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry x="1310" y="610" width="180" height="105" as="geometry"/>
+                    <mxGeometry x="1510" y="610" width="180" height="105" as="geometry"/>
                 </mxCell>
                 <mxCell id="l-options" value="&lt;b&gt;LoadOption&lt;/b&gt; Recreate | ShowProgress | ShowStats" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BDBDBD;strokeColor=#757575;fontSize=11;align=center;fontColor=#212121;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry x="1090" y="725" width="400" height="35" as="geometry"/>
+                    <mxGeometry x="1290" y="725" width="400" height="35" as="geometry"/>
                 </mxCell>
                 <mxCell id="l-arr1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#1A1A1A;" parent="1" source="l-source" target="l-document" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-arr2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#1A1A1A;" parent="1" source="l-document" target="l-chunking" edge="1">
+                <mxCell id="l-arr2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#1A1A1A;" parent="1" source="l-document" target="l-ocr" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="l-arr-ocr" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#1A1A1A;" parent="1" source="l-ocr" target="l-chunking" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="l-arr3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#1A1A1A;" parent="1" source="l-chunking" target="l-embedder" edge="1">
@@ -171,9 +180,9 @@
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="765" y="500"/>
-                            <mxPoint x="820" y="500"/>
-                            <mxPoint x="820" y="530"/>
-                            <mxPoint x="965" y="530"/>
+                            <mxPoint x="1165" y="500"/>
+                            <mxPoint x="1165" y="530"/>
+                            <mxPoint x="1165" y="530"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
