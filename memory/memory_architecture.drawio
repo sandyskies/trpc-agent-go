@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="memory-arch" name="Memory Architecture">
-        <mxGraphModel dx="492" dy="830" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="900" math="0" shadow="0">
+        <mxGraphModel dx="492" dy="564" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="900" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -155,41 +155,41 @@
                 <mxCell id="layer3-label" value="③ Storage Layer — 多后端可插拔存储" style="text;html=1;strokeColor=none;fillColor=#424242;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=18;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="80" y="610" width="350" height="35" as="geometry"/>
                 </mxCell>
-                <mxCell id="layer3-feature" value="✓ 插件化架构: 实现 Service 接口即可扩展 | ✓ 统一接口，后端透明切换" style="text;html=1;strokeColor=none;fillColor=#BDBDBD;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontColor=#212121;fontFamily=PingFang SC;" vertex="1" parent="1">
+                <mxCell id="layer3-feature" value="✓ 插件化架构: 实现 Service 接口即可扩展 | ✓ 统一接口，后端透明切换" style="text;html=1;strokeColor=none;fillColor=#BDBDBD;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=12;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="480" y="610" width="450" height="35" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-inmem" value="&lt;b style=&quot;font-size:13px&quot;&gt;💾 InMemory&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;内存存储&lt;br&gt;sync.RWMutex 并发安全&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
-                    <mxGeometry x="80" y="660" width="150" height="70" as="geometry"/>
+                <mxCell id="l-inmem" value="&lt;b&gt;InMemory&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size:10px&quot;&gt;内存存储&lt;br&gt;sync.RWMutex&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#212121;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="660" width="130" height="70" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-inmem-use" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;开发测试&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BDBDBD;strokeColor=#757575;fontSize=10;align=center;fontColor=#212121;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
-                    <mxGeometry x="80" y="740" width="150" height="25" as="geometry"/>
+                <mxCell id="l-inmem-use" value="&lt;font style=&quot;font-size:10px&quot;&gt;开发测试&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BDBDBD;strokeColor=#757575;fontSize=10;align=center;fontColor=#ffffff;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="740" width="130" height="25" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-mysql" value="&lt;b style=&quot;font-size:13px&quot;&gt;🐬 MySQL&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;关系型存储&lt;br&gt;JSON 字段 | 软删除&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#212121;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
-                    <mxGeometry x="260" y="660" width="150" height="70" as="geometry"/>
+                <mxCell id="l-mysql" value="&lt;b&gt;MySQL&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size:10px&quot;&gt;关系型存储&lt;br&gt;JSON 字段&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#212121;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="660" width="130" height="70" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-mysql-use" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;通用场景&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BDBDBD;strokeColor=#757575;fontSize=10;align=center;fontColor=#212121;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
-                    <mxGeometry x="260" y="740" width="150" height="25" as="geometry"/>
+                <mxCell id="l-mysql-use" value="&lt;font style=&quot;font-size:10px&quot;&gt;通用场景&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BDBDBD;strokeColor=#757575;fontSize=10;align=center;fontColor=#ffffff;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="740" width="130" height="25" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-pgsql" value="&lt;b style=&quot;font-size:13px&quot;&gt;🐘 PostgreSQL&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;高级关系型存储&lt;br&gt;JSONB 原生支持&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#212121;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
-                    <mxGeometry x="440" y="660" width="150" height="70" as="geometry"/>
+                <mxCell id="l-pgsql" value="&lt;b&gt;PostgreSQL&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size:10px&quot;&gt;高级关系型&lt;br&gt;JSONB 支持&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#212121;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="660" width="130" height="70" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-pgsql-use" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;生产环境&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BDBDBD;strokeColor=#757575;fontSize=10;align=center;fontColor=#212121;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
-                    <mxGeometry x="440" y="740" width="150" height="25" as="geometry"/>
+                <mxCell id="l-pgsql-use" value="&lt;font style=&quot;font-size:10px&quot;&gt;生产环境&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BDBDBD;strokeColor=#757575;fontSize=10;align=center;fontColor=#ffffff;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="380" y="740" width="130" height="25" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-redis" value="&lt;b style=&quot;font-size:13px&quot;&gt;⚡ Redis&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;高性能缓存存储&lt;br&gt;Hash 结构&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#212121;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
-                    <mxGeometry x="620" y="660" width="150" height="70" as="geometry"/>
+                <mxCell id="l-redis" value="&lt;b&gt;Redis&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size:10px&quot;&gt;高性能缓存&lt;br&gt;Hash 结构&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#212121;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="660" width="130" height="70" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-redis-use" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;高并发&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BDBDBD;strokeColor=#757575;fontSize=10;align=center;fontColor=#212121;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
-                    <mxGeometry x="620" y="740" width="150" height="25" as="geometry"/>
+                <mxCell id="l-redis-use" value="&lt;font style=&quot;font-size:10px&quot;&gt;高并发&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BDBDBD;strokeColor=#757575;fontSize=10;align=center;fontColor=#ffffff;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="740" width="130" height="25" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-features" value="&lt;b style=&quot;font-size:13px&quot;&gt;🔌 插件化架构&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;• 实现 Service 接口即可扩展&lt;br&gt;• 统一的 CRUD 操作&lt;br&gt;• 后端透明切换&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#757575;strokeColor=#424242;fontSize=11;align=left;fontColor=#ffffff;spacingLeft=10;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
-                    <mxGeometry x="800" y="660" width="170" height="80" as="geometry"/>
+                <mxCell id="l-features" value="&lt;b&gt;插件化架构&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size:10px&quot;&gt;• 实现 Service 接口即可扩展&lt;br&gt;• 统一的 CRUD 操作&lt;br&gt;• 后端透明切换&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#757575;strokeColor=#424242;fontSize=11;align=left;fontColor=#ffffff;spacingLeft=10;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="690" y="660" width="200" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-model" value="&lt;b style=&quot;font-size:13px&quot;&gt;📦 数据模型&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;• AppName + UserID 复合主键&lt;br&gt;• Memory 内容 + Topics 标签&lt;br&gt;• CreatedAt / UpdatedAt 时间戳&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#757575;strokeColor=#424242;fontSize=11;align=left;fontColor=#ffffff;spacingLeft=10;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
-                    <mxGeometry x="1000" y="660" width="200" height="80" as="geometry"/>
+                <mxCell id="l-model" value="&lt;b&gt;数据模型&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size:10px&quot;&gt;• AppName + UserID 复合主键&lt;br&gt;• Memory 内容 + Topics 标签&lt;br&gt;• CreatedAt / UpdatedAt 时间戳&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#757575;strokeColor=#424242;fontSize=11;align=left;fontColor=#ffffff;spacingLeft=10;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="920" y="660" width="220" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-extend" value="&lt;b style=&quot;font-size:13px&quot;&gt;🚀 扩展能力&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;• 自定义 TableName&lt;br&gt;• MemoryLimit 限制&lt;br&gt;• WithLogger 配置&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#757575;strokeColor=#424242;fontSize=11;align=left;fontColor=#ffffff;spacingLeft=10;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
-                    <mxGeometry x="1230" y="660" width="160" height="80" as="geometry"/>
+                <mxCell id="l-extend" value="&lt;b&gt;扩展能力&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size:10px&quot;&gt;• 自定义 TableName&lt;br&gt;• MemoryLimit 限制&lt;br&gt;• WithLogger 配置&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#757575;strokeColor=#424242;fontSize=11;align=left;fontColor=#ffffff;spacingLeft=10;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
+                    <mxGeometry x="1170" y="660" width="180" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="api-to-add" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#4CAF50;exitX=0.3;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="memory-tools" target="add-s1">
                     <mxGeometry relative="1" as="geometry">
@@ -218,22 +218,22 @@
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="1128" y="580"/>
-                            <mxPoint x="155" y="580"/>
+                            <mxPoint x="145" y="580"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="add-storage-label" value="&lt;b&gt;写入&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=#E0E0E0;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontColor=#424242;fontFamily=PingFang SC;" vertex="1" parent="1">
+                <mxCell id="add-storage-label" value="&lt;b&gt;写入&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=#E0E0E0;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontColor=#ffffff;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="600" y="570" width="50" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="search-from-storage" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=2;strokeColor=#757575;dashed=1;dashPattern=8 4;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="s-s4" target="l-features">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="663" y="580"/>
-                            <mxPoint x="885" y="580"/>
+                            <mxPoint x="790" y="580"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="search-storage-label" value="&lt;b&gt;检索&lt;/b&gt;" style="text;html=1;strokeColor=#757575;fillColor=#E0E0E0;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontColor=#424242;strokeWidth=1;fontFamily=PingFang SC;" vertex="1" parent="1">
+                <mxCell id="search-storage-label" value="&lt;b&gt;检索&lt;/b&gt;" style="text;html=1;strokeColor=#757575;fillColor=#E0E0E0;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=11;fontColor=#ffffff;strokeWidth=1;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="750" y="570" width="50" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="legend-bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#E0E0E0;strokeWidth=2;fontFamily=PingFang SC;" vertex="1" parent="1">
@@ -245,22 +245,22 @@
                 <mxCell id="color-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E90FF;strokeColor=none;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="1435" y="700" width="15" height="15" as="geometry"/>
                 </mxCell>
-                <mxCell id="color-1-label" value="Tool 层" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#666666;fontFamily=PingFang SC;" vertex="1" parent="1">
+                <mxCell id="color-1-label" value="Tool 层" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#ffffff;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="1455" y="697" width="50" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="color-2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4CAF50;strokeColor=none;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="1520" y="700" width="15" height="15" as="geometry"/>
                 </mxCell>
-                <mxCell id="color-2-label" value="Pipeline" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#666666;fontFamily=PingFang SC;" vertex="1" parent="1">
+                <mxCell id="color-2-label" value="Pipeline" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#ffffff;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="1540" y="697" width="60" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="color-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=none;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="1610" y="700" width="15" height="15" as="geometry"/>
                 </mxCell>
-                <mxCell id="color-3-label" value="Storage" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#666666;fontFamily=PingFang SC;" vertex="1" parent="1">
+                <mxCell id="color-3-label" value="Storage" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#ffffff;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="1630" y="697" width="60" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="legend-note" value="&lt;font style=&quot;font-size:10px&quot;&gt;• LLM 根据 Tool Description 自主决策调用&lt;br&gt;• Context 自动注入 Service + UserKey&lt;br&gt;• 中英文 Bigram 分词，无需外部词典&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#666666;fontFamily=PingFang SC;" vertex="1" parent="1">
+                <mxCell id="legend-note" value="&lt;font style=&quot;font-size:10px&quot;&gt;• LLM 根据 Tool Description 自主决策调用&lt;br&gt;• Context 自动注入 Service + UserKey&lt;br&gt;• 中英文 Bigram 分词，无需外部词典&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#ffffff;fontFamily=PingFang SC;" vertex="1" parent="1">
                     <mxGeometry x="1435" y="725" width="250" height="50" as="geometry"/>
                 </mxCell>
             </root>
