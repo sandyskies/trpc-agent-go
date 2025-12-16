@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Knowledge Architecture" id="knowledge-arch">
-        <mxGraphModel dx="491" dy="461" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="900" math="0" shadow="0">
+        <mxGraphModel dx="605" dy="598" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="900" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -99,11 +99,11 @@
                 <mxCell id="layer3-label" value="③ Load Pipeline — 数据加载流程" style="text;html=1;strokeColor=none;fillColor=#424242;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;fontSize=18;fontStyle=1;fontColor=#ffffff;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="80" y="550" width="350" height="35" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-source" value="&lt;b style=&quot;font-size:13px&quot;&gt;📂 Source&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;数据源接口&lt;br&gt;ReadDocuments()&lt;br&gt;Name() | Type()&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#1A1A1A;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry x="80" y="610" width="150" height="95" as="geometry"/>
+                <mxCell id="l-source" value="&lt;b style=&quot;font-size:13px&quot;&gt;📂 Source&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;数据源接口&lt;br&gt;&lt;b&gt;支持类型：&lt;/b&gt;&lt;br&gt;• auto (自动检测)&lt;br&gt;• file (文件)&lt;br&gt;• dir (目录)&lt;br&gt;• url (URL)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#424242;strokeColor=#1A1A1A;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="610" width="150" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-document" value="&lt;b style=&quot;font-size:13px&quot;&gt;📄 Document&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;文档对象&lt;br&gt;ID | Content | Metadata&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#1A1A1A;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry x="280" y="610" width="150" height="95" as="geometry"/>
+                <mxCell id="l-document" value="&lt;b style=&quot;font-size:13px&quot;&gt;📄 Document&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 9px;&quot;&gt;文档对象&lt;br&gt;ID | Content | Metadata&lt;br&gt;&lt;hr style=&quot;margin:2px 0&quot;&gt;&lt;b&gt;支持格式：&lt;/b&gt;&lt;br&gt;• Markdown (.md)&lt;br&gt;• PDF (.pdf)&lt;br&gt;• Word (.docx)&lt;br&gt;• Text/HTML&lt;br&gt;• JSON/CSV&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#1A1A1A;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="610" width="150" height="140" as="geometry"/>
                 </mxCell>
                 <mxCell id="l-ocr" value="&lt;b style=&quot;font-size:13px&quot;&gt;👁️ OCR&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;图片文字识别&lt;br&gt;PDF 图片提取&lt;br&gt;ExtractText()&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#757575;strokeColor=#424242;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="480" y="610" width="150" height="95" as="geometry"/>
@@ -111,8 +111,8 @@
                 <mxCell id="l-ocr-impl" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Tesseract OCR&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BDBDBD;strokeColor=#757575;fontSize=10;align=center;fontColor=#212121;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="480" y="715" width="150" height="35" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-chunking" value="&lt;b style=&quot;font-size:13px&quot;&gt;✂️ Chunking&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;文档分块&lt;br&gt;策略配置 | 重叠处理&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#1A1A1A;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
-                    <mxGeometry x="680" y="610" width="150" height="95" as="geometry"/>
+                <mxCell id="l-chunking" value="&lt;b style=&quot;font-size:13px&quot;&gt;✂️ Chunking&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;文档分块&lt;br&gt;&lt;b&gt;支持策略：&lt;/b&gt;&lt;br&gt;• FixedSize (固定大小)&lt;br&gt;• Recursive (递归)&lt;br&gt;• Markdown (Markdown)&lt;br&gt;• JSON (JSON)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#1A1A1A;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="610" width="150" height="140" as="geometry"/>
                 </mxCell>
                 <mxCell id="l-embedder" value="&lt;b style=&quot;font-size:13px&quot;&gt;🔢 Embedder&lt;/b&gt;&lt;hr style=&quot;margin:4px 0&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot;&gt;向量Embedding&lt;br&gt;GetEmbedding() | 批量处理&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#616161;strokeColor=#1A1A1A;fontSize=12;align=center;fontColor=#ffffff;shadow=1;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="880" y="610" width="160" height="95" as="geometry"/>
