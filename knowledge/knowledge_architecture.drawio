@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Knowledge Architecture" id="knowledge-arch">
-        <mxGraphModel dx="605" dy="598" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="900" math="0" shadow="0">
+        <mxGraphModel dx="533" dy="502" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="900" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -135,22 +135,22 @@
                 <mxCell id="l-options" value="&lt;b&gt;LoadOption&lt;/b&gt; Recreate | ShowProgress | ShowStats" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BDBDBD;strokeColor=#757575;fontSize=11;align=center;fontColor=#212121;strokeWidth=2;fontFamily=PingFang SC;" parent="1" vertex="1">
                     <mxGeometry x="1290" y="725" width="400" height="35" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-arr1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#1A1A1A;" parent="1" source="l-source" target="l-document" edge="1">
+                <mxCell id="l-arr1" style="rounded=0;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#1A1A1A;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="l-source" target="l-document" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-arr2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#1A1A1A;" parent="1" source="l-document" target="l-ocr" edge="1">
+                <mxCell id="l-arr2" style="rounded=0;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#1A1A1A;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="l-document" target="l-ocr" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-arr-ocr" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#1A1A1A;" parent="1" source="l-ocr" target="l-chunking" edge="1">
+                <mxCell id="l-arr-ocr" style="rounded=0;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#1A1A1A;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="l-ocr" target="l-chunking" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-arr3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#1A1A1A;" parent="1" source="l-chunking" target="l-embedder" edge="1">
+                <mxCell id="l-arr3" style="rounded=0;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#1A1A1A;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="l-chunking" target="l-embedder" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-arr4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#1A1A1A;" parent="1" source="l-embedder" target="l-vectorstore" edge="1">
+                <mxCell id="l-arr4" style="rounded=0;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#1A1A1A;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="l-embedder" target="l-vectorstore" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="l-arr5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#424242;dashed=1;" parent="1" source="l-vectorstore" target="l-sync" edge="1">
+                <mxCell id="l-arr5" style="rounded=0;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#424242;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="l-vectorstore" target="l-sync" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="api-to-search" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;strokeWidth=3;strokeColor=#4CAF50;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="builtin-knowledge" target="s-retriever" edge="1">
